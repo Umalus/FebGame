@@ -3,9 +3,12 @@
  * @Goal		1月末までに作品提出できるくらいのレベルにする
  */
 
+//必須インクルード
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm.hpp>
+
 int main() {
 	//glfwの初期化
 	if (!glfwInit()) return -1;
