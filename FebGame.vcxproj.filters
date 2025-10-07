@@ -16,6 +16,9 @@
     <Filter Include="ソース ファイル\glad">
       <UniqueIdentifier>{2c85a836-3bf0-4919-8fcd-a6b25f82c08a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameObject">
+      <UniqueIdentifier>{1e810fee-a1e8-43b9-a11b-0b62c1f9e9fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -24,6 +27,12 @@
     <ClCompile Include="libs\glad\src\glad.c">
       <Filter>ソース ファイル\glad</Filter>
     </ClCompile>
+    <ClCompile Include="Src\GameObject\GameObject.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec3.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h">
@@ -31,6 +40,12 @@
     </ClInclude>
     <ClInclude Include="libs\glad\include\KHR\khrplatform.h">
       <Filter>ソース ファイル\glad</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\GameObject\GameObject.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec3.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
