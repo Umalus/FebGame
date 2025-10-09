@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="libs\glad\src\glad.c" />
+    <ClCompile Include="Src\GameObject\Camera\Camera.cpp" />
     <ClCompile Include="Src\GameObject\GameObject.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Vec3.cpp" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h" />
     <ClInclude Include="libs\glad\include\KHR\khrplatform.h" />
+    <ClInclude Include="Src\GameObject\Camera\Camera.h" />
     <ClInclude Include="Src\GameObject\GameObject.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>

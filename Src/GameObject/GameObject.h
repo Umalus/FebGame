@@ -27,8 +27,17 @@ public:			//コンストラクタとデストラクタ
 	/*
 	 * @brief	コンストラクタ
 	 */
-
 	GameObject();
+
+	/*
+	 * @brief	コンストラクタのオーバーライド
+	 * @param[in]	const Vector3& _pos		初期化する座標
+	 * @param[in]	const Vector3& _rotate	初期化する回転
+	 * @param[in]	const Vector3& _scale	初期化する拡縮
+	 */
+	GameObject(const glm::vec3& _pos, const glm::vec3& _rotate,const glm::vec3& _scale);
+
+
 
 	/*
 	 * @brief	デストラクタ
@@ -60,7 +69,7 @@ public:			//メンバ関数
 	 * @function	Render
 	 * @brief		描画処理
 	 */
-	virtual void Render();
+	virtual void Renderer();
 
 
 };

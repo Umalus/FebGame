@@ -1,5 +1,7 @@
 #include "Vec3.h"
 #include <math.h>
+
+const float Vector3::pi = 3.141592f;
 Vector3::Vector3()
     :x{}
     ,y{}
@@ -41,6 +43,16 @@ Vector3 Vector3::Cross(const Vector3& _vec1, const Vector3& _vec2)
                     _vec1.x * _vec2.y - _vec1.y * _vec2.x);
 }
 
+float Vector3::Radians(float _degree)
+{
+    return _degree * pi / 180.0f ;
+}
+
+
+float Vector3::Degrees(float _radian)
+{
+    return _radian * 180.0f / pi;
+}
 
 Vector3 Vector3::operator+(const Vector3& _other) const
 {

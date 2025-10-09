@@ -7,6 +7,13 @@ GameObject::GameObject()
 {
 }
 
+GameObject::GameObject(const glm::vec3& _pos, const glm::vec3& _rotate, const glm::vec3& _scale)
+	:transform{ _pos, _rotate,_scale },
+	modelMatrix{},
+	parent{ this }
+{
+}
+
 void GameObject::Awake()
 {
 
@@ -39,6 +46,6 @@ void GameObject::Update(float _deltaTime)
 
 }
 
-void GameObject::Render()
+void GameObject::Renderer()
 {
 }

@@ -5,6 +5,8 @@ public:		//メンバ変数
 	float x;
 	float y;
 	float z;
+public:
+	static const float pi;
 public:		//コンストラクタとデストラクタ
 	/*
 	 * @brief	デフォルトコンストラクタ
@@ -52,6 +54,20 @@ public:		//静的メンバ関数
 	 * @return		Vector3
 	 */
 	static Vector3 Cross(const Vector3& _vec1, const Vector3& _vec2);
+
+	/*
+	 * @function	Radians
+	 * @brief		デグリー角をラジアン角に変える
+	 * @return		float
+	 */
+	static float Radians(float _degree);
+
+	/*
+	 * @function	Degrees
+	 * @brief		ラジアン角をデグリー角に変える
+	 * @return		float
+	 */
+	static float Degrees(float _radian);
 
 public:		//オペレーターのオーバーライド
 	//加算
