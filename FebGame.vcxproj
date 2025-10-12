@@ -147,6 +147,7 @@
     <ClCompile Include="Src\GameObject\Camera\Camera.cpp" />
     <ClCompile Include="Src\GameObject\GameObject.cpp" />
     <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Transform.cpp" />
     <ClCompile Include="Vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="libs\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="Src\GameObject\Camera\Camera.h" />
     <ClInclude Include="Src\GameObject\GameObject.h" />
+    <ClInclude Include="Src\Transform.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <ItemGroup>

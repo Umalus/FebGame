@@ -6,6 +6,19 @@ public:		//メンバ変数
 	float y;
 	float z;
 public:
+	static Vector3 zero;
+	static Vector3 one;
+	static Vector3 right;
+	static Vector3 left;
+	static Vector3 up;
+	static Vector3 down;
+	static Vector3 forward;
+	static Vector3 back;
+
+
+
+
+public:
 	static const float pi;
 public:		//コンストラクタとデストラクタ
 	/*
