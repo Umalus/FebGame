@@ -39,6 +39,9 @@
     <ClCompile Include="Src\GameObject\GameObject.cpp">
       <Filter>ソース ファイル\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Matrix_4x4.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h">
@@ -57,6 +60,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Src\Vec3.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Matrix_4x4.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
