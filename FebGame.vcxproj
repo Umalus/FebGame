@@ -148,7 +148,7 @@
     <ClCompile Include="Src\GameObject\GameObject.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\Transform.cpp" />
-    <ClCompile Include="Vec3.cpp" />
+    <ClCompile Include="Src\Vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h" />
@@ -156,7 +156,7 @@
     <ClInclude Include="Src\GameObject\Camera\Camera.h" />
     <ClInclude Include="Src\GameObject\GameObject.h" />
     <ClInclude Include="Src\Transform.h" />
-    <ClInclude Include="Vec3.h" />
+    <ClInclude Include="Src\Vec3.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
