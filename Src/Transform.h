@@ -1,11 +1,13 @@
 #pragma once
 #include "Vec3.h"
-
+#include "Matrix_4x4.h"
 class Transform {
 public:		//メンバ変数
 	Vector3 position;
 	Vector3 rotation;
 	Vector3 scale;
+
+	Matrix_4x4 modelMatrix;
 
 public:		//コンストラクタとデストラクタ
 
@@ -19,8 +21,9 @@ public:		//コンストラクタとデストラクタ
 	 * @param[in]	Vector3 _pos		初期化位置
 	 * @param[in]	Vector3 _rota = Vector3::zero	初期化回転
 	 * @param[in]	Vector3 _scale = Vector3::zero	初期化拡縮
+	 * @param[in]	Matrix_4x4	_matrix = Matrix()	モデル行列の初期化
 	 */
-	Transform(Vector3 _pos, Vector3 _rota = Vector3::zero, Vector3 _scale = Vector3::zero);
+	Transform(Vector3 _pos, Vector3 _rota, Vector3 _scale, Matrix_4x4 _matrix);
 
 	/*
 	 * @brief		デストラクタ
@@ -31,8 +34,9 @@ public:		//メンバ関数
 	/*
 	 * @function	ToMatrix
 	 * @brief		位置、回転、拡縮からモデル行列を生成
+	 * @return		Matrix_4x4
 	 */
-	void ToMatirx();
+	Matrix_4x4 ToMatrix()const;
 
 
 	/*

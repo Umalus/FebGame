@@ -1,8 +1,12 @@
 #include "Matrix_4x4.h"
 
-Matrix_4x4::Matrix_4x4()
-    :matrix{}
-{
+Matrix_4x4::Matrix_4x4(){
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            matrix[i][j] = Identity().matrix[i][j];
+        }
+    }
+
 }
 
 Matrix_4x4::Matrix_4x4(std::array<float, 4> _x,
@@ -131,4 +135,82 @@ float Matrix_4x4::Determinant()const {
     }
 
     return result;
+}
+
+Matrix_4x4 Matrix_4x4::FromTranslation(const Vector3& _pos)
+{
+    //単位行列を生成
+    Matrix_4x4 result = Identity();
+    //最下段に_posをそれぞれ代入
+    result.matrix[0][3] = _pos.x;
+    result.matrix[1][3] = _pos.y;
+    result.matrix[2][3] = _pos.z;
+
+
+    return result;
+}
+
+Matrix_4x4 Matrix_4x4::FromRotationEuler(const Vector3& _rota)
+{
+    //各軸の回転行列を個別に生成
+    Matrix_4x4 yaw = FromRotationY(_rota.y);
+    Matrix_4x4 pitch = FromRotationX(_rota.x);
+    Matrix_4x4 roll = FromRotationZ(_rota.z);
+
+    Matrix_4x4 rotationMatrix = roll.Multiply(pitch.Multiply(yaw));
+
+    return rotationMatrix;
+}
+
+Matrix_4x4 Matrix_4x4::FromScale(const Vector3& _scale)
+{
+    //各軸のスケール値を対角成分に配置
+    std::array<float, 4> x = { _scale.x, 0.0f, 0.0f, 0.0f };
+    std::array<float, 4> y = { 0.0f,_scale.y,0.0f,0.0f };
+    std::array<float, 4> z = { 0.0f, 0.0f, _scale.z, 0.0f };
+    std::array<float, 4> w = { 0.0f, 0.0f, 0.0f, 1.0f };
+
+    return Matrix_4x4(x,y,z,w);
+}
+
+Matrix_4x4 Matrix_4x4::FromRotationX(float _radX)
+{
+    //cosΘとsinΘを生成
+    float cosTheta = cosf(Vector3::Radians(_radX));
+    float sinTheta = sinf(Vector3::Radians(_radX));
+    //各行を生成
+    std::array<float, 4> x = { 1.0f, 0.0f, 0.0f, 0.0f};
+    std::array<float, 4> y = { 0.0f,cosTheta,-sinTheta,0.0f };
+    std::array<float, 4> z = { 0.0f, sinTheta, cosTheta, 0.0f };
+    std::array<float, 4> w = { 0.0f, 0.0f, 0.0f, 1.0f };
+
+    return Matrix_4x4(x,y,z,w);
+}
+
+Matrix_4x4 Matrix_4x4::FromRotationY(float _radY)
+{
+    //cosΘとsinΘを生成
+    float cosTheta = cosf(Vector3::Radians(_radY));
+    float sinTheta = sinf(Vector3::Radians(_radY));
+    //各行を生成
+    std::array<float, 4> x = { cosTheta, 0.0f, sinTheta, 0.0f };
+    std::array<float, 4> y = { 0.0f, 1.0f, 0.0f, 0.0f };
+    std::array<float, 4> z = { -sinTheta, 0.0f, cosTheta, 0.0f };
+    std::array<float, 4> w = { 0.0f, 0.0f, 0.0f, 1.0f };
+
+    return Matrix_4x4(x, y, z, w);
+}
+
+Matrix_4x4 Matrix_4x4::FromRotationZ(float _radZ)
+{
+    //cosΘとsinΘを生成
+    float cosTheta = cosf(Vector3::Radians(_radZ));
+    float sinTheta = sinf(Vector3::Radians(_radZ));
+    //各行を生成
+    std::array<float, 4> x = { cosTheta, -sinTheta, 0.0f, 0.0f };
+    std::array<float, 4> y = { sinTheta,cosTheta,0.0f,0.0f };
+    std::array<float, 4> z = { 0.0f, 0.0f, 1.0f, 0.0f };
+    std::array<float, 4> w = { 0.0f, 0.0f, 0.0f, 1.0f };
+
+    return Matrix_4x4(x, y, z, w);
 }

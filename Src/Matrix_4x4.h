@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include "Matrix_3x3.h"
+#include "Vec3.h"
 class Matrix_4x4 {
 public:			//メンバ変数
 	float matrix[4][4];
@@ -16,7 +17,7 @@ public:			//コンストラクタとデストラクタ
 	 * @brief	//コンストラクタのオーバーライド
 	 */
 	Matrix_4x4(std::array<float,4> _x,std::array<float,4> _y, std::array<float,4> _z,std::array<float,4> _w);
-
+	
 	/*
 	 * @brief	//デストラクタ
 	 */
@@ -24,12 +25,7 @@ public:			//コンストラクタとデストラクタ
 
 public:			//メンバ関数
 
-	/*
-	 * @function	Identity
-	 * @brief		単位行列を返す
-	 * @return		Matrix_4x4
-	 */
-	Matrix_4x4 Identity();
+	
 
 	/*
 	 * @function	Transpose
@@ -79,5 +75,63 @@ public:			//メンバ関数
 	 * @return		float
 	 */
 	float Determinant()const;
+
+public:		//静的メンバ関数
+
+	/*
+	 * @function	Identity
+	 * @brief		単位行列を返す
+	 * @return		Matrix_4x4
+	 */
+	static Matrix_4x4 Identity();
+
+	/*
+	 * @function	FromTranslation
+	 * @brief		平行移動から行列を構築
+	 * @param[in]	const Vector3& _pos	行列にする対象
+	 * @return		Matrix_4x4
+	 */
+	static Matrix_4x4 FromTranslation(const Vector3& _pos);
+	
+	/*
+	 * @function	FromRotationEuler
+	 * @brief		回転から行列を構築
+	 * @param[in]	const Vector3& _rota	行列にする対象
+	 * @return		Matrix_4x4
+	 */
+	static Matrix_4x4 FromRotationEuler(const Vector3& _rota);
+	
+	/*
+	 * @function	FromScale
+	 * @brief		平行移動から行列を構築
+	 * @param[in]	const Vector3& _scale	行列にする対象
+	 * @return		Matrix_4x4
+	 */
+	static Matrix_4x4 FromScale(const Vector3& _scale);
+
+private:	//内部処理しやすいようなメンバ関数
+
+	/*
+	 * @function	FromRotationX
+	 * @brief		X軸回転から回転行列を生成
+	 * @param[in]	float _radX		回転軸
+	 * @return		Matrix_4x4
+	 */
+	static Matrix_4x4 FromRotationX(float _radX);
+	/*
+	 * @function	FromRotationY
+	 * @brief		X軸回転から回転行列を生成
+	 * @param[in]	float _radY 	回転軸
+	 * @return		Matrix_4x4
+	 */
+	static Matrix_4x4 FromRotationY(float _radY);
+	/*
+	 * @function	FromRotationZ
+	 * @brief		X軸回転から回転行列を生成
+	 * @param[in]	float _radZ		回転軸
+	 * @return		Matrix_4x4
+	 */
+	static Matrix_4x4 FromRotationZ(float _radZ);
+
 
 };
