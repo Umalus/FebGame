@@ -42,19 +42,19 @@
     <ClCompile Include="Src\GameObject\GameObject.cpp">
       <Filter>ソース ファイル\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Matrix_3x3.cpp">
+    <ClCompile Include="Src\Math\Matrix_3x3.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Matrix_4x4.cpp">
+    <ClCompile Include="Src\Math\Matrix_4x4.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Ray.cpp">
+    <ClCompile Include="Src\Math\Ray.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Transform.cpp">
+    <ClCompile Include="Src\Math\Transform.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Vec3.cpp">
+    <ClCompile Include="Src\Math\Vec3.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,26 +65,26 @@
     <ClInclude Include="libs\glad\include\KHR\khrplatform.h">
       <Filter>ソース ファイル\glad</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Matrix_3x3.h">
-      <Filter>ヘッダー ファイル\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Matrix_4x4.h">
-      <Filter>ヘッダー ファイル\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Ray.h">
-      <Filter>ヘッダー ファイル\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Transform.h">
-      <Filter>ヘッダー ファイル\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Vec3.h">
-      <Filter>ヘッダー ファイル\Math</Filter>
-    </ClInclude>
     <ClInclude Include="Src\GameObject\GameObject.h">
       <Filter>ヘッダー ファイル\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Src\GameObject\Camera\Camera.h">
       <Filter>ヘッダー ファイル\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Math\Matrix_3x3.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Math\Matrix_4x4.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Math\Ray.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Math\Transform.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Math\Vec3.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
