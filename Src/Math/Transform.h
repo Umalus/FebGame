@@ -17,7 +17,7 @@ public:		//コンストラクタとデストラクタ
 	Transform();
 
 	/*
-	 * @brief		コンストラクタのオーバーライド
+	 * @brief		コンストラクタのオーバーロード
 	 * @param[in]	Vector3 _pos		初期化位置
 	 * @param[in]	Vector3 _rota = Vector3::zero	初期化回転
 	 * @param[in]	Vector3 _scale = Vector3::zero	初期化拡縮

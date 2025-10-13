@@ -147,6 +147,7 @@
     <ClCompile Include="Src\GameObject\Camera\Camera.cpp" />
     <ClCompile Include="Src\GameObject\GameObject.cpp" />
     <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Math\AABB.cpp" />
     <ClCompile Include="Src\Math\Matrix_3x3.cpp" />
     <ClCompile Include="Src\Math\Matrix_4x4.cpp" />
     <ClCompile Include="Src\Math\Ray.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="libs\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="Src\GameObject\Camera\Camera.h" />
     <ClInclude Include="Src\GameObject\GameObject.h" />
+    <ClInclude Include="Src\Math\AABB.h" />
     <ClInclude Include="Src\Math\Matrix_3x3.h" />
     <ClInclude Include="Src\Math\Matrix_4x4.h" />
     <ClInclude Include="Src\Math\Ray.h" />

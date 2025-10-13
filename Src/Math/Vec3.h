@@ -91,9 +91,9 @@ public:		//オペレーターのオーバーライド
 	Vector3 operator*(const Vector3& _other)const;
 	//乗算(スカラー倍(掛ける値がfloatのバージョン))
 	Vector3 operator*(const float _value)const;
-	//除算(スカラー倍(掛ける値がVectorのバージョン))
+	//除算(割る値がVectorのバージョン)
 	Vector3 operator/(const Vector3& _other)const;
-	//除算(スカラー倍(掛ける値がfloatのバージョン))
+	//除算(割る値がfloatのバージョン)
 	Vector3 operator/(const float _value)const;
 	
 	//比較

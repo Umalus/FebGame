@@ -13,7 +13,7 @@ public:			//コンストラクタとデストラクタ
 	Matrix_3x3();
 
 	/*
-	 * @brief		コンストラクタのオーバーライド
+	 * @brief		コンストラクタのオーバーロード
 	 * @param[in]	std::array<float,3> _x		1行列目
 	 * @param[in]	std::array<float,3> _y		2行列目
 	 * @param[in]	std::array<float,3> _z		3行列目

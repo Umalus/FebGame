@@ -28,7 +28,7 @@ public:		//コンストラクタとデストラクタ
 	Ray();
 
 	/*
-	 * @brief		コンストラクタのオーバーライド
+	 * @brief		コンストラクタのオーバーロード
 	 * @param[in]	Vector3 _origin		原点
 	 * @param[in]	Vector3 _direction	方向
 	 */

@@ -14,7 +14,7 @@ public:			//コンストラクタとデストラクタ
 	Matrix_4x4();
 	
 	/*
-	 * @brief	//コンストラクタのオーバーライド
+	 * @brief	//コンストラクタのオーバーロード
 	 */
 	Matrix_4x4(std::array<float,4> _x,std::array<float,4> _y, std::array<float,4> _z,std::array<float,4> _w);
 	
