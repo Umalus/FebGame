@@ -96,6 +96,12 @@ public:		//オペレーターのオーバーライド
 	//除算(割る値がfloatのバージョン)
 	Vector3 operator/(const float _value)const;
 	
+	//加算(複合代入演算子ver)
+	Vector3 operator+=(const Vector3& _other)const;
+	//減算(複合代入演算子ver)
+	Vector3 operator-=(const Vector3& _other)const;
+
+
 	//比較
 	bool operator==(const Vector3& _other)const;
 

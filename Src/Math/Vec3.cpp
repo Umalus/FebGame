@@ -110,6 +110,24 @@ Vector3 Vector3::operator/(const float _value) const
                    z / _value);
 }
 
+Vector3 Vector3::operator+=(const Vector3& _other) const
+{
+    float reslutX = x + _other.x;
+    float reslutY = y + _other.y;
+    float reslutZ = z + _other.z;
+
+    return Vector3(reslutX,reslutY,reslutZ);
+}
+
+Vector3 Vector3::operator-=(const Vector3& _other) const
+{
+    float reslutX = x - _other.x;
+    float reslutY = y - _other.y;
+    float reslutZ = z - _other.z;
+    return Vector3(reslutX, reslutY, reslutZ);
+}
+
+
 bool Vector3::operator==(const Vector3& _other) const
 {
     //Ç≤Ç≠ÇÌÇ∏Ç©Ç»åÎç∑ÇãñóeÇ∑ÇÈ

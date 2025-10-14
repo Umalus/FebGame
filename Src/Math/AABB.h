@@ -51,6 +51,21 @@ public:		//メンバ関数
 	 */
 	void Encapsulate(AABB _other);
 
+	/*
+	 * @function	Intersect
+	 * @brief		2つのAABBが重なっているかどうか
+	 * @param[in]	const AABB& _other
+	 * @return		bool
+	 */
+	bool Intersect(const AABB& _other)const;
+
+	/*
+	 * @function	Contains
+	 * @brief		AABBに点が含まれているかどうか
+	 * @param[in]	const Vector3& _point
+	 * @return		bool
+	 */
+	bool Contains(const Vector3& _point)const;
 
 public:		//静的メンバ関数
 

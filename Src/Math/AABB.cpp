@@ -16,14 +16,25 @@ AABB::~AABB()
 
 void AABB::Expand(Vector3 _amount)
 {
+    min -= _amount;
+    max += _amount;
 }
 
 void AABB::Encapsulate(Vector3 _point)
 {
+    min.x = std::min(min.x,_point.x);
+    min.y = std::min(min.y,_point.y);
+    min.z = std::min(min.z,_point.z);
+    
+    max.x = std::max(max.x,_point.x);
+    max.y = std::max(max.y,_point.y);
+    max.z = std::max(max.z,_point.z);
 }
 
 void AABB::Encapsulate(AABB _other)
 {
+    Encapsulate(_other.min);
+    Encapsulate(_other.max);
 }
 
 AABB AABB::FromCenterSize(Vector3 _center, Vector3 _scale)
@@ -34,6 +45,19 @@ AABB AABB::FromCenterSize(Vector3 _center, Vector3 _scale)
     
     //ˆø”‚É“ü‚ê‚ÄAABB‚ğ¶¬
     return AABB(min,max);
+}
+
+bool AABB::Intersect(const AABB& _other)const {
+    return (max.x >= _other.min.x && min.x <= _other.max.x)
+        && (max.y >= _other.min.y && min.y <= _other.max.y)
+        && (max.z >= _other.min.z && min.z <= _other.max.z);
+}
+
+bool AABB::Contains(const Vector3& _point)const
+{
+    return (max.x >= _point.x && min.x <= _point.x)
+        && (max.y >= _point.y && min.y <= _point.y)
+        && (max.z >= _point.z && min.z <= _point.z);
 }
 
 inline Vector3 AABB::GetCenter() const
