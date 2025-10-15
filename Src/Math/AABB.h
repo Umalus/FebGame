@@ -12,7 +12,7 @@ public:		//メンバ変数
 	Vector3 max;	//最大座標
 
 public:		//コンストラクタとデストラクタ
-	
+
 	/*
 	 * @brief		デフォルトコンストラクタ
 	 */
@@ -27,7 +27,7 @@ public:		//コンストラクタとデストラクタ
 
 	/*
 	 * @brief		デストラクタ
- 	 */
+	 */
 	~AABB();
 public:		//メンバ関数
 
@@ -67,6 +67,15 @@ public:		//メンバ関数
 	 */
 	bool Contains(const Vector3& _point)const;
 
+	/*
+	 * @function	RayCastHitAABB
+	 * @brief		RayがAABBに当たったかどうか
+	 * @param[in]	const Vector3& _origin		原点
+	 * @param[in]	const Vector3& _direction	方向
+	 * @param[in]	float _tHit
+	 */
+	bool RaycastHitAABB(const Vector3& _origin, const Vector3& _direction)const;
+
 public:		//静的メンバ関数
 
 	/*
@@ -91,7 +100,7 @@ public:		//ユーティリティ
 	 * @function	GetSize
 	 * @brief		AABBのサイズを取得
 	 * @return		Vector3
- 	 */
+	 */
 	inline Vector3 GetScale()const;
 
 	/*
@@ -102,3 +111,5 @@ public:		//ユーティリティ
 	std::array<Vector3, 8> GetTops()const;
 
 };
+
+

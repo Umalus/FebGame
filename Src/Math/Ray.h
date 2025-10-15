@@ -49,7 +49,6 @@ public:		//ƒƒ“ƒoŠÖ”
 	 */
 	inline Vector3 GetPoint(float _t)const;
 
-
 public:		//Ã“Iƒƒ“ƒoŠÖ”
 
 	/*
