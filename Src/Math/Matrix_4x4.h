@@ -133,5 +133,8 @@ private:	//内部処理しやすいようなメンバ関数
 	 */
 	static Matrix_4x4 FromRotationZ(float _radZ);
 
+public:		//オペレーターのオーバーロード
 
+	//ベクトルとの掛け算
+	Vector3 operator*(const Vector3& _vec3);
 };

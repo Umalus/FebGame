@@ -214,3 +214,13 @@ Matrix_4x4 Matrix_4x4::FromRotationZ(float _radZ)
 
     return Matrix_4x4(x, y, z, w);
 }
+
+Vector3 Matrix_4x4::operator*(const Vector3& _vec3)
+{
+    float w = 1.0f;
+    float resultX = matrix[0][0] * _vec3.x + matrix[0][1] * _vec3.y + matrix[0][2] * _vec3.z + matrix[0][3] * w;
+    float resultY = matrix[1][0] * _vec3.x + matrix[1][1] * _vec3.y + matrix[1][2] * _vec3.z + matrix[1][3] * w;
+    float resultZ = matrix[2][0] * _vec3.x + matrix[2][1] * _vec3.y + matrix[2][2] * _vec3.z + matrix[2][3] * w;
+
+    return Vector3(resultX,resultY,resultZ);
+}

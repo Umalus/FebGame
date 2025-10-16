@@ -41,12 +41,24 @@ float Vector3::Magnitude()const{
     return sqrtf(x * x + y * y + z * z);
 }
 
-float Vector3::Dot(const Vector3& _vec1, const Vector3& _vec2)
+float Vector3::Dot(const Vector3& _other)
+{
+    return x * _other.x + y * _other.y + z * _other.z;
+}
+
+Vector3 Vector3::Cross(const Vector3& _other)
+{
+    return Vector3(y * _other.z - z * _other.y,
+                   z * _other.x - x * _other.z,
+                   x * _other.y - y * _other.x);
+}
+
+float Vector3::DotProduct(const Vector3& _vec1, const Vector3& _vec2)
 {
     return _vec1.x * _vec2.x + _vec1.y * _vec2.y + _vec1.z * _vec2.z;
 }
 
-Vector3 Vector3::Cross(const Vector3& _vec1, const Vector3& _vec2)
+Vector3 Vector3::CrossProduct(const Vector3& _vec1, const Vector3& _vec2)
 {
     return Vector3( _vec1.y * _vec2.z - _vec1.z * _vec2.y,
                     _vec1.z * _vec2.x - _vec1.x * _vec2.z,
@@ -110,21 +122,21 @@ Vector3 Vector3::operator/(const float _value) const
                    z / _value);
 }
 
-Vector3 Vector3::operator+=(const Vector3& _other) const
+Vector3 Vector3::operator+=(const Vector3& _other)
 {
-    float reslutX = x + _other.x;
-    float reslutY = y + _other.y;
-    float reslutZ = z + _other.z;
+     x += _other.x;
+     y += _other.y;
+     z += _other.z;
 
-    return Vector3(reslutX,reslutY,reslutZ);
+    return *this;
 }
 
-Vector3 Vector3::operator-=(const Vector3& _other) const
+Vector3 Vector3::operator-=(const Vector3& _other)
 {
-    float reslutX = x - _other.x;
-    float reslutY = y - _other.y;
-    float reslutZ = z - _other.z;
-    return Vector3(reslutX, reslutY, reslutZ);
+    x -= _other.x;
+    y -= _other.y;
+    z -= _other.z;
+    return *this;
 }
 
 
@@ -135,4 +147,13 @@ bool Vector3::operator==(const Vector3& _other) const
     return fabs(x - _other.x) < EPSILON &&
            fabs(y - _other.y) < EPSILON &&
            fabs(z - _other.z) < EPSILON;
+}
+
+bool Vector3::operator!=(const Vector3& _other) const
+{
+    //‚²‚­‚í‚¸‚©‚ÈŒë·‚ð‹–—e‚·‚é
+    constexpr float EPSILON = 0.0001f;
+    return fabs(x - _other.x) > EPSILON ||
+           fabs(y - _other.y) > EPSILON ||
+           fabs(z - _other.z) > EPSILON;
 }

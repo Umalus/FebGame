@@ -29,7 +29,13 @@ Matrix_4x4 Transform::ToMatrix()const{
 }
 
 void Transform::LookAt(const Vector3& _pos){
+    //•ûŒü‚ğ‹‚ß‚é
+    Vector3 direction = (_pos - position).Normalize();
+    //‰ñ“]‚ğ¶¬
+    float yaw = atan2f(direction.x, direction.z);
+    float pitch = atan2f(-direction.y,sqrtf(direction.x * direction.x + direction.z * direction.z));
 
+    rotation = Vector3(pitch, yaw, 0.0f);
 }
 
 inline void Transform::SetPosition(Vector3 _pos){

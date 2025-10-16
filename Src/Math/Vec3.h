@@ -52,6 +52,25 @@ public:		//メンバ関数
 	 * @return		float
 	 */
 	float Magnitude()const;
+
+	/*
+	 * @function	Dot
+	 * @brief		自分ともう一方のベクトルの内積を計算
+	 * @param[in]	const Vector3& _other	他のベクトル
+	 * @return		float
+	 */
+	float Dot(const Vector3& _other);
+
+	/*
+	 * @function	Dot
+	 * @brief		自分ともう一方のベクトルの外積を計算
+	 * @param[in]	const Vector3& _other	他のベクトル
+	 * @return		Vector3
+	 */
+	Vector3 Cross(const Vector3& _other);
+
+
+
 public:		//静的メンバ関数
 	/*
 	 * @function	Dot
@@ -59,14 +78,14 @@ public:		//静的メンバ関数
 	 * @param
 	 * @return		float
 	 */
-	static float Dot(const Vector3& _vec1,const Vector3& _vec2);
+	static float DotProduct(const Vector3& _vec1,const Vector3& _vec2);
 
 	/*
 	 * @function	Cross
 	 * @brief		2つベクトルの外積を計算
 	 * @return		Vector3
 	 */
-	static Vector3 Cross(const Vector3& _vec1, const Vector3& _vec2);
+	static Vector3 CrossProduct(const Vector3& _vec1, const Vector3& _vec2);
 
 	/*
 	 * @function	Radians
@@ -97,13 +116,13 @@ public:		//オペレーターのオーバーライド
 	Vector3 operator/(const float _value)const;
 	
 	//加算(複合代入演算子ver)
-	Vector3 operator+=(const Vector3& _other)const;
+	Vector3 operator+=(const Vector3& _other);
 	//減算(複合代入演算子ver)
-	Vector3 operator-=(const Vector3& _other)const;
+	Vector3 operator-=(const Vector3& _other);
 
 
 	//比較
 	bool operator==(const Vector3& _other)const;
 
-
+	bool operator!=(const Vector3& _other)const;
 };

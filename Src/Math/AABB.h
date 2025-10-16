@@ -66,16 +66,6 @@ public:		//メンバ関数
 	 * @return		bool
 	 */
 	bool Contains(const Vector3& _point)const;
-
-	/*
-	 * @function	RayCastHitAABB
-	 * @brief		RayがAABBに当たったかどうか
-	 * @param[in]	const Vector3& _origin		原点
-	 * @param[in]	const Vector3& _direction	方向
-	 * @param[in]	float _tHit
-	 */
-	bool RaycastHitAABB(const Vector3& _origin, const Vector3& _direction)const;
-
 public:		//静的メンバ関数
 
 	/*

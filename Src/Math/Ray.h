@@ -1,5 +1,6 @@
 #pragma once
 #include "Vec3.h"
+#include "AABB.h"
 
 class Collider;
 struct HitInfo {
@@ -48,6 +49,14 @@ public:		//ƒƒ“ƒoŠÖ”
 	 * @return		Vector3
 	 */
 	inline Vector3 GetPoint(float _t)const;
+
+	/*
+	 * @function	Intersects
+	 * @brief		AABB‚Æ‚Ì“–‚½‚è”»’è
+	 * @param[in]	const AABB& _hitBox
+	 * @return		bool
+	 */
+	bool RaycastHitAABB(const AABB& _hitBox);
 
 public:		//Ã“Iƒƒ“ƒoŠÖ”
 

@@ -1,9 +1,5 @@
 #include "AABB.h"
 
-namespace Math {
-
-	constexpr float EPSILON = 0.000001f;
-}
 AABB::AABB()
 	:min{ Vector3::zero }
 	, max{ Vector3::one } {
@@ -62,86 +58,6 @@ bool AABB::Contains(const Vector3& _point)const
 	return (max.x >= _point.x && min.x <= _point.x)
 		&& (max.y >= _point.y && min.y <= _point.y)
 		&& (max.z >= _point.z && min.z <= _point.z);
-}
-
-bool AABB::RaycastHitAABB(const Vector3& _origin, const Vector3& _direction) const
-{
-	float tmin = -INFINITY;
-	float tmax = INFINITY;
-
-	float tmin_x, tmax_x;
-	float tmin_y, tmax_y;
-	float tmin_z, tmax_z;
-
-
-	//Xé≤
-	if (abs(_direction.x) <= Math::EPSILON) {
-		if (_origin.x < min.x || _origin.x > max.x)
-			return false;
-		else {
-			tmin_x = -INFINITY;
-			tmax_x = INFINITY;
-		}
-
-	}
-
-	else {
-	float t1 = (min.x - _origin.x) / _direction.x;
-	float t2 = (max.x - _origin.x) / _direction.x;
-
-		tmin_x = std::min(t1, t2);
-		tmax_x = std::max(t1, t2);
-	}
-	
-
-	
-
-	//Yé≤
-	if (abs(_direction.y) <= Math::EPSILON) {
-		if (_origin.y < min.y || _origin.y > max.y)
-			return false;
-		else {
-			tmin_y = -INFINITY;
-			tmax_y = INFINITY;
-		}
-
-	}
-
-	else {
-		float t1 = (min.y - _origin.y) / _direction.y;
-		float t2 = (max.y - _origin.y) / _direction.y;
-
-		tmin_y = std::min(t1, t2);
-		tmax_y = std::max(t1, t2);
-	}
-	//Zé≤
-	if (abs(_direction.z) <= Math::EPSILON) {
-		if (_origin.z < min.z || _origin.z > max.z)
-			return false;
-		else {
-			tmin_z = -INFINITY;
-			tmax_z = INFINITY;
-		}
-
-	}
-
-	else {
-		float t1 = (min.z - _origin.z) / _direction.z;
-		float t2 = (max.z - _origin.z) / _direction.z;
-
-		tmin_z = std::min(t1, t2);
-		tmax_z = std::max(t1, t2);
-	}
-
-	tmin = std::max(tmin_x, tmin_y, tmin_z);
-	tmax = std::min(tmax_x, tmax_y, tmax_z);
-
-	//åç∑îªíË
-	if (tmax >= tmin && tmin >= 0)
-		return true;
-
-	return false; // åç∑Ç∑ÇÈ
-
 }
 
 inline Vector3 AABB::GetCenter() const
