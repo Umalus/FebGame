@@ -28,6 +28,12 @@
     <Filter Include="ヘッダー ファイル\GameObject">
       <UniqueIdentifier>{7bfbf046-b489-47e1-861f-280e8bbbd087}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Info">
+      <UniqueIdentifier>{7627b929-2032-4d71-815d-ac1d1fdcb3e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Component">
+      <UniqueIdentifier>{c3f1e308-8cf1-414e-addf-d9ab66405825}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -91,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="Src\Math\AABB.h">
       <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Info\HitInfo.h">
+      <Filter>ヘッダー ファイル\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Component\Collider.h">
+      <Filter>ヘッダー ファイル\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

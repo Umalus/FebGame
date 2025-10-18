@@ -1,17 +1,8 @@
 #pragma once
 #include "Vec3.h"
 #include "AABB.h"
+#include "../Info/HitInfo.h"
 
-class Collider;
-struct HitInfo {
-	bool isHit;						//当たったかどうか
-	Vector3 point;					//当たった地点
-	Vector3 normal;					//
-	float distance;					//距離
-	Collider* collider = nullptr;   //コライダー
-
-
-};
 /*
  * @class	Ray
  * @brief	レイを飛ばして当たり判定や視界、弾の制御等を行う	
@@ -56,7 +47,7 @@ public:		//メンバ関数
 	 * @param[in]	const AABB& _hitBox
 	 * @return		bool
 	 */
-	bool RaycastHitAABB(const AABB& _hitBox);
+	HitInfo RaycastHitAABB(const AABB& _hitBox);
 
 public:		//静的メンバ関数
 

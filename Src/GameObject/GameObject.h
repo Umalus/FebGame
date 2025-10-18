@@ -1,25 +1,17 @@
 #pragma once
 
-#include "../glm/glm.hpp"
-#include "../glm/vec3.hpp"
-#include "gtc/matrix_transform.hpp"
+#include "../Math/Transform.h"
+#include "../Math/AABB.h"
+#include "../Math/Matrix_4x4.h"
+
 #include <string>
 #include <vector>
-
-struct Transform {
-	glm::vec3 position;		//位置
-	glm::vec3 rotation;		//回転
-	glm::vec3 scale;		//拡縮
-
-};
-
+#include <iostream>
 class GameObject {
 private :		//メンバ変数
-	Transform transform;
+	std::unique_ptr<Transform> transform;
 	std::string name;		//オブジェクトの名前
-
-	glm::mat4 modelMatrix;
-
+	
 	GameObject* parent;
 	std::vector<GameObject*> children;
 
@@ -35,7 +27,7 @@ public:			//コンストラクタとデストラクタ
 	 * @param[in]	const Vector3& _rotate	初期化する回転
 	 * @param[in]	const Vector3& _scale	初期化する拡縮
 	 */
-	GameObject(const glm::vec3& _pos, const glm::vec3& _rotate,const glm::vec3& _scale);
+	GameObject(Vector3 _pos, Vector3 _rotate, Vector3 _scale);
 
 
 

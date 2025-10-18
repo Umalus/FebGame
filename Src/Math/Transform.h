@@ -21,15 +21,21 @@ public:		//コンストラクタとデストラクタ
 	 * @param[in]	Vector3 _pos		初期化位置
 	 * @param[in]	Vector3 _rota = Vector3::zero	初期化回転
 	 * @param[in]	Vector3 _scale = Vector3::zero	初期化拡縮
-	 * @param[in]	Matrix_4x4	_matrix = Matrix()	モデル行列の初期化
 	 */
-	Transform(Vector3 _pos, Vector3 _rota, Vector3 _scale, Matrix_4x4 _matrix);
+	Transform(Vector3 _pos, Vector3 _rota, Vector3 _scale);
 
 	/*
 	 * @brief		デストラクタ
 	 */
 	~Transform();
 public:		//メンバ関数
+	
+	/*
+	 * @function	UpdateModelMatrix
+	 * @brief		モデル行列の更新
+	 */
+	void UpdateModelMatrix();
+
 
 	/*
 	 * @function	ToMatrix

@@ -47,7 +47,7 @@ public:		//メンバ関数
 	Vector3 Normalize();
 
 	/*
-	 * @function	Normalize
+	 * @function	Magnitude
 	 * @brief		ベクトルの長さを計算
 	 * @return		float
 	 */

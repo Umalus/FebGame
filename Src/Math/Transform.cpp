@@ -8,15 +8,20 @@ Transform::Transform()
 {
 }
 
-Transform::Transform(Vector3 _pos, Vector3 _rota = Vector3::zero, Vector3 _scale = Vector3::zero,Matrix_4x4 _matrix = Matrix_4x4())
+Transform::Transform(Vector3 _pos, Vector3 _rota = Vector3::zero, Vector3 _scale = Vector3::zero)
     :position{_pos}
     ,rotation{_rota}
     ,scale{_scale}
-    ,modelMatrix{_matrix}
 {
+    UpdateModelMatrix();
 }
 
 Transform::~Transform(){
+}
+
+void Transform::UpdateModelMatrix()
+{
+    modelMatrix = ToMatrix();
 }
 
 Matrix_4x4 Transform::ToMatrix()const{
