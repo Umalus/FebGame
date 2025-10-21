@@ -34,6 +34,9 @@
     <Filter Include="ヘッダー ファイル\Component">
       <UniqueIdentifier>{c3f1e308-8cf1-414e-addf-d9ab66405825}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Manager">
+      <UniqueIdentifier>{2a289c9f-8be8-4956-af74-849363e703fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -103,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="Src\Component\Collider.h">
       <Filter>ヘッダー ファイル\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Singleton.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
