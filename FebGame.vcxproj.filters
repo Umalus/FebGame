@@ -37,6 +37,9 @@
     <Filter Include="ヘッダー ファイル\Manager">
       <UniqueIdentifier>{2a289c9f-8be8-4956-af74-849363e703fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Resource">
+      <UniqueIdentifier>{86d50453-2958-4963-8554-ae009f977743}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -107,8 +110,14 @@
     <ClInclude Include="Src\Component\Collider.h">
       <Filter>ヘッダー ファイル\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Singleton.h">
+    <ClInclude Include="Src\Manager\Singleton.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Manager\ResourceManager.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Resource\Resource.h">
+      <Filter>ヘッダー ファイル\Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
