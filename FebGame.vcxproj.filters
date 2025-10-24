@@ -40,6 +40,9 @@
     <Filter Include="ヘッダー ファイル\Resource">
       <UniqueIdentifier>{86d50453-2958-4963-8554-ae009f977743}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Resource">
+      <UniqueIdentifier>{ab37d841-2aed-4e17-a13b-e7bc38db528c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -71,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="Src\Math\AABB.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Resource\Resource.cpp">
+      <Filter>ソース ファイル\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="Src\Resource\Resource.h">
       <Filter>ヘッダー ファイル\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Manager\ModelResourceManager.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -31,7 +31,7 @@ public:	//仮想関数で実装するメンバ関数
 	 * @param[in]	std::string	_filePath	ファイルパス
 	 * @return		Resource
 	 */
-	virtual void Load(std::string _filePath) = 0;
+	virtual void Load(const std::string& _filePath) = 0;
 
 	/*
 	 * @function	UnLoad

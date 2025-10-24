@@ -153,6 +153,7 @@
     <ClCompile Include="Src\Math\Ray.cpp" />
     <ClCompile Include="Src\Math\Transform.cpp" />
     <ClCompile Include="Src\Math\Vec3.cpp" />
+    <ClCompile Include="Src\Resource\Resource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Src\GameObject\Camera\Camera.h" />
     <ClInclude Include="Src\GameObject\GameObject.h" />
     <ClInclude Include="Src\Info\HitInfo.h" />
+    <ClInclude Include="Src\Manager\ModelResourceManager.h" />
     <ClInclude Include="Src\Manager\ResourceManager.h" />
     <ClInclude Include="Src\Manager\Singleton.h" />
     <ClInclude Include="Src\Math\AABB.h" />
