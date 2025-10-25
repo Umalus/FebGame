@@ -87,6 +87,9 @@
     <ClCompile Include="Src\Resource\ModelResource.cpp">
       <Filter>ソース ファイル\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Resource\Mesh\Mesh.cpp">
+      <Filter>ソース ファイル\Resource\Mesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h">
@@ -139,6 +142,12 @@
     </ClInclude>
     <ClInclude Include="Src\Resource\ModelResource.h">
       <Filter>ヘッダー ファイル\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Resource\Mesh\MeshData.h">
+      <Filter>ヘッダー ファイル\Resource\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Resource\Mesh\Mesh.h">
+      <Filter>ヘッダー ファイル\Resource\Mesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
