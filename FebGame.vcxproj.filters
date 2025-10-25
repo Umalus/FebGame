@@ -43,6 +43,12 @@
     <Filter Include="ソース ファイル\Resource">
       <UniqueIdentifier>{ab37d841-2aed-4e17-a13b-e7bc38db528c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Resource\Mesh">
+      <UniqueIdentifier>{968b5373-e356-4159-9f01-5548d68de99e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Resource\Mesh">
+      <UniqueIdentifier>{20fb739e-fac9-4c27-abda-4476dbf87781}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -76,6 +82,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Src\Resource\Resource.cpp">
+      <Filter>ソース ファイル\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Resource\ModelResource.cpp">
       <Filter>ソース ファイル\Resource</Filter>
     </ClCompile>
   </ItemGroup>
@@ -127,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="Src\Manager\ModelResourceManager.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Resource\ModelResource.h">
+      <Filter>ヘッダー ファイル\Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

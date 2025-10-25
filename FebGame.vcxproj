@@ -153,6 +153,7 @@
     <ClCompile Include="Src\Math\Ray.cpp" />
     <ClCompile Include="Src\Math\Transform.cpp" />
     <ClCompile Include="Src\Math\Vec3.cpp" />
+    <ClCompile Include="Src\Resource\ModelResource.cpp" />
     <ClCompile Include="Src\Resource\Resource.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="Src\Math\Ray.h" />
     <ClInclude Include="Src\Math\Transform.h" />
     <ClInclude Include="Src\Math\Vec3.h" />
+    <ClInclude Include="Src\Resource\ModelResource.h" />
     <ClInclude Include="Src\Resource\Resource.h" />
   </ItemGroup>
   <ItemGroup>
