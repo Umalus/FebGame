@@ -1,6 +1,9 @@
 #include "Mesh.h"
 
 Mesh::Mesh()
+	:vao{}
+	,vbo{}
+	,ebo{}
 {
 }
 

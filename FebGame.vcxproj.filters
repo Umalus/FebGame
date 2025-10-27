@@ -90,6 +90,9 @@
     <ClCompile Include="Src\Resource\Mesh\Mesh.cpp">
       <Filter>ソース ファイル\Resource\Mesh</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Manager\FBXLoader.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h">
@@ -148,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="Src\Resource\Mesh\Mesh.h">
       <Filter>ヘッダー ファイル\Resource\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Manager\FBXLoader.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
