@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Resource.h"
+#include "../Manager/FBXLoader.h"
+#include "Mesh/Mesh.h"
 class ModelResource : public Resource {
 public:		//コンストラクタとデストラクタ
 	
@@ -41,4 +43,22 @@ public:		//継承するメンバ関数
 	 * @return		bool
 	 */
 	bool isLoaded()const override;
+
+private:		//描画処理に必要な変換や便利関数
+
+	/*
+	 * @function	SearchNode
+	 * @brief		ノードを巡回
+	 * @param[in]	const FbxLoader& _loader
+	 * @return		MeshData
+	 */
+	MeshData SearchNode(const FBXLoader& _loader);
+
+	/*
+	 * @function	FBXVec4ToVec3
+	 * @brief		Vec4からVec3に変換
+	 * @param[in]	const FbxVector4& _vec4
+	 * @return		Vector3
+	 */
+	inline Vector3 FBXVec4ToVec3(const FbxVector4& _vec4)const;
 };

@@ -9,8 +9,8 @@
 
 struct MeshData
 {
-	std::vector<Vector3> vertexs;
- 	std::vector<Vector3> normals;
-	std::vector<Vector3> uvs;
-	std::vector<unsigned int> index;
+	std::vector<Vector3> vertecies;		//頂点データ
+ 	std::vector<Vector3> normals;		//法線データ
+	std::vector<Vector3> uvs;			//UV座標データ
+	std::vector<unsigned int> indices;	//ポリゴン描画順のデータ
 };
