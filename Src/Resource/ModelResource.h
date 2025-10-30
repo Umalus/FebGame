@@ -4,6 +4,9 @@
 #include "../Manager/FBXLoader.h"
 #include "Mesh/Mesh.h"
 class ModelResource : public Resource {
+private:
+	std::shared_ptr<Mesh> mesh;
+
 public:		//コンストラクタとデストラクタ
 	
 	/*

@@ -3,7 +3,7 @@
 Mesh::Mesh()
 	:vao{}
 	,vbo{}
-	,ebo{}
+	,ibo{}
 {
 }
 
@@ -11,22 +11,39 @@ Mesh::~Mesh()
 {
 }
 
-void Mesh::SetData(const MeshData& _meshData)
-{
-	vertices.clear();
-	indices.clear();
+void Mesh::SetData(MeshData _meshData)
+{;
 	//頂点データを保存
-	for (auto vertexDatas : _meshData.vertecies) {
-		vertices.push_back(vertexDatas);
-	}
-	
-	for (auto indexDatas : _meshData.indices) {
-		indices.push_back(indexDatas);
-	}
+	this->vertices = _meshData.vertecies;
+	this->indices = _meshData.indices;
 }
 
-void Mesh::UploadGPU()
+void Mesh::UpdataToGPU()
 {
+	//vaoを生成してバインド
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
+	//Vboを生成してバインド
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
+	//Iboを生成してバインド
+	glGenBuffers(1, &ibo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(unsigned int) * indices.size(),indices.data(), GL_STATIC_DRAW);
+
+	//頂点属性を設定
+	//ポジション
+	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,Vertex::position));
+	glEnableVertexAttribArray(0);
+	//法線
+	glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,Vertex::normal));
+	glEnableVertexAttribArray(1);
+	//uv
+	glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,Vertex::uv));
+	glEnableVertexAttribArray(2);
+	//Vaoをアンバインド
+	glBindVertexArray(0);
 }
 
 void Mesh::Draw()

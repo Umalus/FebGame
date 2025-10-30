@@ -1,6 +1,7 @@
 #pragma once
 #include "MeshData.h"
 #include <glad/glad.h>
+#include "Vertex.h"
 
 /* 
  * @class		Mesh
@@ -9,12 +10,10 @@
 class Mesh {
 private:		//メンバ変数
 
-	std::vector<Vector3> vertices;
-	std::vector<Vector3> normals;
-	std::vector<Vector3> uvs;
+	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 
-	GLuint vao, vbo, ebo;
+	GLuint vao, vbo, ibo;
 
 public:			//コンストラクタとデストラクタ
 
@@ -33,15 +32,15 @@ public:			//メンバ関数
 	/*
 	 * @function	SetData 
 	 * @brief		メッシュデータをセット
-	 * @param[in]	const MeshData& _meshData
+	 * @param[in]	MeshData _meshData
 	 */
-	void SetData(const MeshData& _meshData);
+	void SetData(MeshData _meshData);
 
 	/*
 	 * @function	UploadGPU
 	 * @brief		GPUにデータをアップロード
 	 */
-	void UploadGPU();
+	void UpdataToGPU();
 
 	/*
 	 * @function		Draw

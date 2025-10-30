@@ -49,6 +49,12 @@
     <Filter Include="ヘッダー ファイル\Resource\Mesh">
       <UniqueIdentifier>{20fb739e-fac9-4c27-abda-4476dbf87781}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Manager">
+      <UniqueIdentifier>{eb6427c4-b3bf-4b22-acb7-3594e754231d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Shader">
+      <UniqueIdentifier>{2441ea21-e41e-449d-b0f9-571e70b010b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -91,7 +97,7 @@
       <Filter>ソース ファイル\Resource\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="Src\Manager\FBXLoader.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,8 +161,14 @@
     <ClInclude Include="Src\Manager\FBXLoader.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Resource\Mesh\Vertex.h">
+      <Filter>ヘッダー ファイル\Resource\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Res\Shader\Shader.glsl">
+      <Filter>リソース ファイル\Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

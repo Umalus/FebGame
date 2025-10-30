@@ -8,11 +8,12 @@
 template <typename T>
 
 class Singleton {
+public:
 	static T& getInstace() {
 		static T instance;
 		return instance;
 	}
-
+	
 	//コピーコンストラクタと代入演算子を削除
 	Singleton(const Singleton&) = delete;
 	Singleton& operator=(const Singleton&) = delete;
@@ -30,4 +31,8 @@ protected:		//コンストラクタとデストラクタ
 	 * @tips	特にすることなし
 	 */
 	~Singleton() = default;
+
+
+	
+
 };

@@ -1,10 +1,12 @@
 #include "ModelResource.h"
 #include <iostream>
 #include <string>
+#include "../Manager/ResourceManager.h"
 
 
 
 ModelResource::ModelResource()
+	:mesh(nullptr)
 {
 }
 
@@ -23,13 +25,9 @@ void ModelResource::Load(const std::string& _filePath)
 	//MeshDataを取得
 	MeshData data = SearchNode(loader);
 
-
-
-
-
-	Mesh mesh;
-	mesh.SetData(data);
-
+	//メッシュに抽出したデータを入れる
+	mesh->SetData(data);
+	mesh->UpdataToGPU();
 }
 
 void ModelResource::UnLoad()
@@ -55,39 +53,40 @@ MeshData ModelResource::SearchNode(const FBXLoader& _loader)
 	//メッシュが無ければ早期リターン
 	if (!fbxMesh || fbxMesh->GetElementUV() == nullptr)return meshData;
 	//各要素(頂点、法線、UV、描画順)をポリゴンループ内で抽出
-	std::vector<Vector3> fbxVertecies;
-	std::vector<Vector3> fbxNormals;
-	std::vector<Vector3> fbxUvs;
+	std::vector<Vertex> fbxVertecies;
 	std::vector<unsigned int> fbxIndices;
 	unsigned int currentIndex = 0;
-	for (int i = 0,max = fbxMesh->GetPolygonCount() ; i < max; i++) {
+	for (int i = 0, max = fbxMesh->GetPolygonCount(); i < max; i++) {
 		int polygonSize = fbxMesh->GetPolygonSize(i);
 		for (int j = 0; j < polygonSize; j++) {
+			Vertex v;
+
 			//頂点を抽出
 			Vector3 vertex = FBXVec4ToVec3(fbxMesh->GetControlPointAt(fbxMesh->GetPolygonVertex(i, j)));
-			fbxVertecies.push_back(vertex);
+			v.position = vertex;
+			
 			//法線を抽出
 			FbxVector4 normal;
-			if (fbxMesh->GetPolygonVertexNormal(i, j,normal))
-			fbxNormals.push_back(FBXVec4ToVec3(normal));
+			if (fbxMesh->GetPolygonVertexNormal(i, j, normal))
+				v.normal = FBXVec4ToVec3(normal);
 
 			//UV座標を抽出
 			const char* uvSetName = fbxMesh->GetElementUV()->GetName();
 			FbxVector2 uv;
 			bool unmapped;
-			bool hasUv = fbxMesh->GetPolygonVertexUV(i, j,uvSetName, uv,unmapped);
+			bool hasUv = fbxMesh->GetPolygonVertexUV(i, j, uvSetName, uv, unmapped);
 			if (hasUv && !unmapped)
-				fbxUvs.push_back(Vector3(uv[0], uv[1], 0));
-
+				v.uv = Vector3(uv[0], uv[1], 0);
+			
+			//作られた頂点情報を配列に挿入
+			fbxVertecies.push_back(v);
+			
+			//ポリゴン描画順を設定
+			fbxIndices.push_back(currentIndex++);
 		}
-		//ポリゴン描画順を設定
-		fbxIndices.push_back(currentIndex++);
 	}
-
 	//抽出したコンテナをMeshDataに格納
 	meshData.vertecies = fbxVertecies;
-	meshData.normals = fbxNormals;
-	meshData.uvs = fbxUvs;
 	meshData.indices = fbxIndices;
 
 	return meshData;

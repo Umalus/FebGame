@@ -169,11 +169,13 @@
     <ClInclude Include="Src\Math\Vec3.h" />
     <ClInclude Include="Src\Resource\Mesh\Mesh.h" />
     <ClInclude Include="Src\Resource\Mesh\MeshData.h" />
+    <ClInclude Include="Src\Resource\Mesh\Vertex.h" />
     <ClInclude Include="Src\Resource\ModelResource.h" />
     <ClInclude Include="Src\Resource\Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Res\Shader\Shader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

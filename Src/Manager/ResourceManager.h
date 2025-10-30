@@ -18,7 +18,6 @@ public:		//メンバ変数
 	std::unordered_map<int,std::shared_ptr<Resource>> idToResource;		//IDから本体を検索
 	//マネージャー系
 	ModelResourceManager modelManager;
-
 public:		//コンストラクタとデストラクタ
 
 	/*
