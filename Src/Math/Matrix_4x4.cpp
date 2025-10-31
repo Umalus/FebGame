@@ -137,6 +137,19 @@ float Matrix_4x4::Determinant()const {
     return result;
 }
 
+std::array<float, 16> Matrix_4x4::GetDataArray() const
+{
+    //配列に展開して返す
+    std::array<float, 16> result;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            result[i * 4 + j] = matrix[j][i];
+        }
+    }
+
+    return result;
+}
+
 Matrix_4x4 Matrix_4x4::FromTranslation(const Vector3& _pos)
 {
     //単位行列を生成

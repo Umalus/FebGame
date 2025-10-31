@@ -149,6 +149,7 @@
     <ClCompile Include="Src\Resource\Mesh\Mesh.cpp" />
     <ClCompile Include="Src\Resource\ModelResource.cpp" />
     <ClCompile Include="Src\Resource\Resource.cpp" />
+    <ClCompile Include="Src\Resource\Shader\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Src\Resource\Mesh\Vertex.h" />
     <ClInclude Include="Src\Resource\ModelResource.h" />
     <ClInclude Include="Src\Resource\Resource.h" />
+    <ClInclude Include="Src\Resource\Shader\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

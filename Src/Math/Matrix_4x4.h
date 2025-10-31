@@ -76,6 +76,14 @@ public:			//メンバ関数
 	 */
 	float Determinant()const;
 
+	/*
+	 * @function	GetDataArray
+	 * @brief		内部の値を配列で返す
+	 * @param[in]	int _index
+	 * @return		float*
+	 */
+	std::array<float, 16> GetDataArray()const;
+
 public:		//静的メンバ関数
 
 	/*
