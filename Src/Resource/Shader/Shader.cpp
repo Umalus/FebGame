@@ -58,6 +58,7 @@ void Shader::UnBind() const
 
 void Shader::SetUniformMat4(const std::string& _uMVP, const Matrix_4x4& _matrix)
 {
+    glUseProgram(programID);
     std::array<float, 16> data = _matrix.GetDataArray();
     glUniformMatrix4fv(GetUniformLocation(_uMVP), 1, GL_FALSE,data.data() );
 }

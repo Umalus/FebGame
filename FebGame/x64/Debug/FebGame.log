@@ -1,2 +1,2 @@
 ﻿  Main.cpp
-LINK : fatal error LNK1168: ファイル C:\Users\tende\Desktop\C++\FebGame\x64\Debug\FebGame.exe を開いて書き込むことができません。
+  FebGame.vcxproj -> C:\Users\tende\Desktop\C++\FebGame\x64\Debug\FebGame.exe

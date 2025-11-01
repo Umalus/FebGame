@@ -56,8 +56,9 @@ void Mesh::UpdataToGPU()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void Mesh::Draw()
+void Mesh::Draw()const
 {
-	//メッシュを描画
-	glDrawElements(GL_TRIANGLES,indexCount,GL_UNSIGNED_INT,nullptr);
+	glBindVertexArray(vao); // VAOをバインド
+	glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, nullptr);
+	glBindVertexArray(0);   // 後片付け（任意）
 }

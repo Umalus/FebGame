@@ -47,6 +47,6 @@ public:			//ƒƒ“ƒoŠÖ”
 	 * @function		Draw
 	 * @brief			•`‰æˆ—
 	 */
-	void Draw();
+	void Draw()const;
 
 };
