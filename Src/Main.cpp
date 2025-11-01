@@ -31,7 +31,13 @@ int main() {
 		return -1;
 	}
 	//ˆÈ‰º‰Šú‰»
+	Mesh testMesh;
+	Shader testShader;
 
+	if (!testShader.Load("Res/Shader/Shader.glsl", "Res/Shader/FragmentShader.glsl"))
+		return -1;
+
+	
 
 
 	while (!glfwWindowShouldClose(window)) {

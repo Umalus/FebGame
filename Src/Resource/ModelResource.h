@@ -1,11 +1,12 @@
 #pragma once
 
+#include <fbxsdk.h>
 #include "Resource.h"
 #include "../Manager/FBXLoader.h"
 #include "Mesh/Mesh.h"
 class ModelResource : public Resource {
 private:
-	std::shared_ptr<Mesh> mesh;
+	std::vector<std::shared_ptr<Mesh>> meshes;
 
 public:		//コンストラクタとデストラクタ
 	
@@ -50,12 +51,28 @@ public:		//継承するメンバ関数
 private:		//描画処理に必要な変換や便利関数
 
 	/*
+	 * @function	SearchAllNode
+	 * @brief		全てのノードを巡回
+	 * @param[in]	const FBXLoader& _loader
+	 * @return      std::vector<MeshData>
+	 */
+	std::vector<MeshData> SearchAllNode(const FBXLoader& _loader);
+
+	/*
+	 * @function	SearceNodeRecursion
+	 * @brief		ノード探索の再帰関数
+	 * @param[in]	FBXNode* _node
+	 * @param[in]	std::vector<MeshData>& _meshes
+	 */
+	void SearceNodeRecursion(FbxNode* _node, std::vector<MeshData>& _meshes);
+
+	/*
 	 * @function	SearchNode
 	 * @brief		ノードを巡回
 	 * @param[in]	const FbxLoader& _loader
 	 * @return		MeshData
 	 */
-	MeshData SearchNode(const FBXLoader& _loader);
+	MeshData SearchNode(FbxMesh* _mesh);
 
 	/*
 	 * @function	FBXVec4ToVec3

@@ -1,2 +1,15 @@
 C:\Users\tende\Desktop\C++\FebGame\libs\glad\src\glad.c;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\glad.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\GameObject\Camera\Camera.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Camera.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\GameObject\GameObject.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\GameObject.obj
 C:\Users\tende\Desktop\C++\FebGame\Src\Main.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Main.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Manager\FBXLoader.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\FBXLoader.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Math\AABB.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\AABB.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Math\Matrix_3x3.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Matrix_3x3.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Math\Matrix_4x4.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Matrix_4x4.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Math\Ray.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Ray.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Math\Transform.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Transform.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Math\Vec3.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Vec3.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Resource\Mesh\Mesh.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Mesh.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Resource\ModelResource.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\ModelResource.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Resource\Resource.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Resource.obj
+C:\Users\tende\Desktop\C++\FebGame\Src\Resource\Shader\Shader.cpp;C:\Users\tende\Desktop\C++\FebGame\FebGame\x64\Debug\Shader.obj

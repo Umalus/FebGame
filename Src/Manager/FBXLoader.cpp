@@ -6,7 +6,7 @@
 FBXLoader::FBXLoader()
 {
 	//FBXManagerの初期化
-	fbxManager = FbxManager::Create();
+	fbxManager = fbxsdk::FbxManager::Create();
 	if (!fbxManager)return;
 	FbxIOSettings* ioSettings = FbxIOSettings::Create(fbxManager, IOSROOT);
 	fbxManager->SetIOSettings(ioSettings);
@@ -18,7 +18,7 @@ FBXLoader::~FBXLoader()
 	if (fbxManager)fbxManager->Destroy();
 }
 
-inline bool FBXLoader::LoadFBX(const std::string& _filePath)
+bool FBXLoader::LoadFBX(const std::string& _filePath)
 {
 	//ファイルのロード
 	//読み込めなかった場合
@@ -52,7 +52,7 @@ inline bool FBXLoader::LoadFBX(const std::string& _filePath)
 	return true;
 }
 
-inline FbxScene* FBXLoader::GetScene() const
+FbxScene* FBXLoader::GetScene() const
 {
 	return scene;
 }

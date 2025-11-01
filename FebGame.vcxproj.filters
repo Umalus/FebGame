@@ -179,5 +179,8 @@
     <None Include="Res\Shader\Shader.glsl">
       <Filter>リソース ファイル\Shader</Filter>
     </None>
+    <None Include="Res\Shader\FragmentShader.glsl">
+      <Filter>リソース ファイル\Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

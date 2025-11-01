@@ -1,5 +1,5 @@
 #pragma once
-#include "fbxsdk.h"
+#include <fbxsdk.h>
 #include <iostream>
 #include <string>
 
@@ -33,13 +33,13 @@ public:
 	 * @param[in]	const std::string& _filePath
 	 * @return		bool
 	 */
-	inline bool LoadFBX(const std::string& _filePath);
+	bool LoadFBX(const std::string& _filePath);
 
 	/*
 	 * @function	GetScene
 	 * @brief		ƒV[ƒ“‚ğæ“¾
 	 * @return		FbxScene*
 	 */
-	inline FbxScene* GetScene()const;
+	FbxScene* GetScene()const;
 
 };
