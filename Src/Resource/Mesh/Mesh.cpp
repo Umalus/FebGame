@@ -1,7 +1,8 @@
 #include "Mesh.h"
 
 Mesh::Mesh()
-	:vao{}
+	:indexCount(-1)
+	,vao{}
 	,vbo{}
 	,ibo{}
 {
@@ -9,6 +10,12 @@ Mesh::Mesh()
 
 Mesh::~Mesh()
 {
+	if (vao)
+		glDeleteVertexArrays(1,&vao);
+	if (vbo)
+		glDeleteBuffers(1,&vbo);
+	if (ibo)
+		glDeleteBuffers(1,&ibo);
 }
 
 void Mesh::SetData(MeshData _meshData)
@@ -16,6 +23,8 @@ void Mesh::SetData(MeshData _meshData)
 	//頂点データを保存
 	this->vertices = _meshData.vertecies;
 	this->indices = _meshData.indices;
+	indexCount = indices.size();
+	UpdataToGPU();
 }
 
 void Mesh::UpdataToGPU()
@@ -44,8 +53,11 @@ void Mesh::UpdataToGPU()
 	glEnableVertexAttribArray(2);
 	//Vaoをアンバインド
 	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void Mesh::Draw()
 {
+	//メッシュを描画
+	glDrawElements(GL_TRIANGLES,indexCount,GL_UNSIGNED_INT,nullptr);
 }

@@ -12,6 +12,7 @@ private:		//ƒƒ“ƒo•Ï”
 
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
+	GLsizei indexCount;
 
 	GLuint vao, vbo, ibo;
 

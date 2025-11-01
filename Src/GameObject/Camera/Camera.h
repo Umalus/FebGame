@@ -1,6 +1,6 @@
 #pragma once
 #include "../GameObject.h"
-#include "../../Vec3.h"
+#include "../../Math/Vec3.h"
 
 class Camera : public GameObject {
 private:	//ƒƒ“ƒo•Ï”

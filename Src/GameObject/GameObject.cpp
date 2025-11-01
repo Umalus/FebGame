@@ -1,13 +1,13 @@
 #include "GameObject.h"
 
 GameObject::GameObject()
-	:transform{std::make_unique<Transform> (Vector3(0.0f, 0.0f, 0.0f), Vector3(0.0f,0.0f,0.0f),Vector3(1.0f,1.0f,1.0f))},
+	:transform{std::make_unique<Transform> (Vector3::zero, Vector3::zero,Vector3::zero)},
 	parent{this}
 {
 }
 
 GameObject::GameObject(Vector3 _pos, Vector3 _rotate, Vector3 _scale)
-	:transform{ std::make_unique<Transform> (_pos, _rotate,_scale,Matrix_4x4())},
+	:transform{ std::make_unique<Transform> (_pos, _rotate,_scale)},
 	parent{ this }
 {
 }

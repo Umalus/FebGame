@@ -28,6 +28,7 @@ void ModelResource::Load(const std::string& _filePath)
 	//メッシュに抽出したデータを入れる
 	mesh->SetData(data);
 	mesh->UpdataToGPU();
+	
 }
 
 void ModelResource::UnLoad()

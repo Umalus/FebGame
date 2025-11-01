@@ -9,7 +9,8 @@
 #include <GLFW/glfw3.h>
 #include <glm.hpp>
 
-#include "Matrix_4x4.h"
+#include "Resource/Mesh/Mesh.h"
+#include "Resource/Shader/Shader.h"
 
 int main() {
 	//glfw‚Ì‰Šú‰»
@@ -29,7 +30,9 @@ int main() {
 		std::cerr << "ƒGƒ‰[‚â‚Å[" << std::endl;
 		return -1;
 	}
-	Matrix_4x4 matrix = Matrix_4x4();
+	//ˆÈ‰º‰Šú‰»
+
+
 
 	while (!glfwWindowShouldClose(window)) {
 		glClear(GL_COLOR_BUFFER_BIT);
