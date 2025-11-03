@@ -66,3 +66,18 @@ inline Vector3 Transform::GetRight() const{
 inline Vector3 Transform::GetUp() const{
     return rotation.up;
 }
+
+Vector3 Transform::GetPosition() const
+{
+    return position;
+}
+
+Vector3 Transform::GetRotation() const
+{
+    return rotation;
+}
+
+Vector3 Transform::GetScale() const
+{
+    return scale;
+}

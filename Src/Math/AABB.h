@@ -91,7 +91,7 @@ public:		//ユーティリティ
 	 * @brief		AABBのサイズを取得
 	 * @return		Vector3
 	 */
-	inline Vector3 GetScale()const;
+	inline Vector3 GetAABBScale()const;
 
 	/*
 	 * @function	GetTops

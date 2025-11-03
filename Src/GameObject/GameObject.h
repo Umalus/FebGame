@@ -3,13 +3,17 @@
 #include "../Math/Transform.h"
 #include "../Math/AABB.h"
 #include "../Math/Matrix_4x4.h"
+#include "../Resource/Mesh/Mesh.h"
+#include "../Resource/Shader/Shader.h"
 
 #include <string>
 #include <vector>
 #include <iostream>
 class GameObject {
-private :		//メンバ変数
+protected :		//メンバ変数
 	std::unique_ptr<Transform> transform;
+	std::unique_ptr<Mesh> mesh;
+	std::unique_ptr<Shader> shader;
 	std::string name;		//オブジェクトの名前
 	
 	GameObject* parent;
@@ -57,11 +61,27 @@ public:			//メンバ関数
 	 */
 	virtual void Update(float _deltaTime);
 
-	/*
-	 * @function	Render
-	 * @brief		描画処理
-	 */
-	virtual void Renderer();
+public:		//ゲッター
 
+	/*
+	 * @function	GetTransform
+	 * @brief		トランスフォームを取得
+	 * @return		Transform&
+	 */
+	Transform* GetTransform()const;
+	
+	/*
+	 * @function	GetMesh
+	 * @brief		メッシュを取得
+	 * @return		Mesh&
+	 */
+	Mesh* GetMesh()const;
+	
+	/*
+	 * @function	GetShader
+	 * @brief		シェーダーを取得
+	 * @return		Shader&
+	 */
+	Shader* GetShader()const;
 
 };

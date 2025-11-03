@@ -66,7 +66,7 @@ inline Vector3 AABB::GetCenter() const
 	return center;
 }
 
-inline Vector3 AABB::GetScale() const
+inline Vector3 AABB::GetAABBScale() const
 {
 	Vector3 scale = max - min;
 	return scale;

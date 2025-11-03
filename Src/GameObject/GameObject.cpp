@@ -1,20 +1,24 @@
 #include "GameObject.h"
 
 GameObject::GameObject()
-	:transform{std::make_unique<Transform> (Vector3::zero, Vector3::zero,Vector3::zero)},
-	parent{this}
+	:transform{std::make_unique<Transform> (Vector3::zero, Vector3::zero,Vector3::zero)}
+	,mesh{std::make_unique<Mesh>()}
+	,shader{std::make_unique<Shader>()}
+	,parent{this}
 {
 }
 
 GameObject::GameObject(Vector3 _pos, Vector3 _rotate, Vector3 _scale)
-	:transform{ std::make_unique<Transform> (_pos, _rotate,_scale)},
-	parent{ this }
+	:transform{ std::make_unique<Transform> (_pos, _rotate,_scale)}
+	,mesh{std::make_unique<Mesh>()}
+	,shader{ std::make_unique<Shader>() }
+	,parent{ this }
 {
 }
 
 void GameObject::Awake()
 {
-
+	shader->Load("Res/Shader/Shader.glsl", "Res/Shader/FragmentShader.glsl");
 }
 
 
@@ -32,6 +36,17 @@ void GameObject::Update(float _deltaTime)
 	transform->ToMatrix();
 }
 
-void GameObject::Renderer()
+Transform* GameObject::GetTransform()const
 {
+	return transform.get();
+}
+
+Mesh* GameObject::GetMesh() const
+{
+	return mesh.get();
+}
+
+Shader* GameObject::GetShader()const
+{
+	return shader.get();
 }

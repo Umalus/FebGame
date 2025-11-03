@@ -58,6 +58,12 @@
     <Filter Include="ヘッダー ファイル\Resource\Shader">
       <UniqueIdentifier>{7b850140-7ea1-4c8b-a926-6e8863beb1f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Engine">
+      <UniqueIdentifier>{84fece9e-5b5f-4109-82bb-780de8151129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine">
+      <UniqueIdentifier>{24d5e706-33a2-42fc-830a-b3c86d100c33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -104,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="Src\Resource\Shader\Shader.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Renderer\Renderer.cpp">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="Src\Resource\Shader\Shader.h">
       <Filter>ヘッダー ファイル\Resource\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Renderer\Renderer.h">
+      <Filter>ヘッダー ファイル\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

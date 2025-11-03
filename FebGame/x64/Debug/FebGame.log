@@ -1,2 +1,18 @@
-﻿  Main.cpp
+﻿  Camera.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\minwindef.h(130,9): warning C4005: 'APIENTRY': マクロが再定義されました。
+  (ソース ファイル 'Src/GameObject/Camera/Camera.cpp' をコンパイルしています)
+      C:\Users\tende\Desktop\C++\FebGame\libs\glad\include\glad\glad.h(32,9):
+      'APIENTRY' の以前の定義を確認してください
+  
+C:\Users\tende\Desktop\C++\FebGame\Src\GameObject\Camera\Camera.cpp(52,15): warning C4244: '初期化中': 'LONG' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\tende\Desktop\C++\FebGame\Src\GameObject\Camera\Camera.cpp(53,15): warning C4244: '初期化中': 'LONG' から 'float' への変換です。データが失われる可能性があります。
+  GameObject.cpp
+  Transform.cpp
+  Renderer.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\minwindef.h(130,9): warning C4005: 'APIENTRY': マクロが再定義されました。
+  (ソース ファイル 'Src/Renderer/Renderer.cpp' をコンパイルしています)
+      C:\Users\tende\Desktop\C++\FebGame\libs\glad\include\glad\glad.h(32,9):
+      'APIENTRY' の以前の定義を確認してください
+  
+  コードを生成中...
   FebGame.vcxproj -> C:\Users\tende\Desktop\C++\FebGame\x64\Debug\FebGame.exe

@@ -228,6 +228,39 @@ Matrix_4x4 Matrix_4x4::FromRotationZ(float _radZ)
     return Matrix_4x4(x, y, z, w);
 }
 
+Matrix_4x4 Matrix_4x4::LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up)
+{
+    //カメラの軸ベクトルを計算
+    //Z軸
+    Vector3 forward = _eye - _target;
+    forward.Normalize();
+
+    //X軸
+    Vector3 right = Vector3::CrossProduct(_up, forward);
+    right.Normalize();
+
+    //Y軸
+    Vector3 trueUp = Vector3::CrossProduct(forward, right);
+
+    //回転行列作成
+    std::array<float, 4>rotaX = { right.x, right.y, right.z, 0.0f };
+    std::array<float, 4>rotaY = { trueUp.x, trueUp.y, trueUp.z, 0.0f };
+    std::array<float, 4>rotaZ = { forward.x, forward.y,forward.z,0.0f };
+    std::array<float, 4>rotaW = { 0.0f ,0.0f, 0.0f, 1.0f };
+    Matrix_4x4 rotaMat(rotaX, rotaY, rotaZ, rotaW);
+    //平行移動行列作成
+    std::array<float, 4>posX = { 1.0f, 0.0f, 0.0f, -_eye.x };
+    std::array<float, 4>posY = { 0.0f, 1.0f, 0.0f, -_eye.y };
+    std::array<float, 4>posZ = { 0.0f, 0.0f, 1.0f, -_eye.z };
+    std::array<float, 4>posW = { 0.0f ,0.0f, 0.0f, 1.0f };
+    Matrix_4x4 posMat(posX, posY, posZ, posW);
+
+
+    Matrix_4x4 viewMat = rotaMat.Multiply(posMat);
+    return viewMat;
+}
+
+
 Vector3 Matrix_4x4::operator*(const Vector3& _vec3)
 {
     float w = 1.0f;

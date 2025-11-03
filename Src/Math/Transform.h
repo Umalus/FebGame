@@ -2,7 +2,7 @@
 #include "Vec3.h"
 #include "Matrix_4x4.h"
 class Transform {
-public:		//メンバ変数
+private:		//メンバ変数
 	Vector3 position;
 	Vector3 rotation;
 	Vector3 scale;
@@ -95,6 +95,27 @@ public:		//セッター
 	 * @return		Vector3
 	 */
 	inline Vector3 GetUp() const;
+
+	/*
+	 * @function	GetPosition
+	 * @brief		位置の取得
+	 * @return		Vector3
+	 */
+	Vector3 GetPosition() const;
+
+	/*
+	 * @function	GetRotation
+	 * @brief		回転の取得
+	 * @return		Vector3
+	 */
+	Vector3 GetRotation() const;
+
+	/*
+	 * @function	GetScale
+	 * @brief		拡縮の取得
+	 * @return		Vector3
+	 */
+	Vector3 GetScale() const;
 
 
 

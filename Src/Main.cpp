@@ -16,7 +16,7 @@ int main() {
 	//glfwの初期化
 	if (!glfwInit()) return -1;
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "FPS", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(1920, 1080, "FPS", NULL, NULL);
 	//ウィンドウが作成されなければ処理終了
 	if (!window) {
 		glfwTerminate();
@@ -80,6 +80,9 @@ int main() {
 	//glfwの解放
 	glfwDestroyWindow(window);
 	glfwTerminate();
+
+	//コンソールで正常に終わったことを確認
+	std::cerr << "このプロジェクトは正常に終了しました" << std::endl;
 
 	return 0;
 

@@ -84,6 +84,7 @@ public:			//メンバ関数
 	 */
 	std::array<float, 16> GetDataArray()const;
 
+	
 public:		//静的メンバ関数
 
 	/*
@@ -116,6 +117,17 @@ public:		//静的メンバ関数
 	 * @return		Matrix_4x4
 	 */
 	static Matrix_4x4 FromScale(const Vector3& _scale);
+
+	/*
+	 * @function	LookAt
+	 * @brief		主にビュー行列を返す
+	 * @param[in]	const Vector3& _eye	位置
+	 * @param[in]	const Vector3& _target		見ている方向
+	 * @param[in]	const Vector3& _up	上方向ベクトル
+	 * @return		Matrix_4x4
+	 */
+	static Matrix_4x4 LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up);
+
 
 private:	//内部処理しやすいようなメンバ関数
 
