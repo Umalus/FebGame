@@ -170,7 +170,7 @@ Matrix_4x4 Matrix_4x4::FromRotationEuler(const Vector3& _rota)
     Matrix_4x4 pitch = FromRotationX(_rota.x);
     Matrix_4x4 roll = FromRotationZ(_rota.z);
 
-    Matrix_4x4 rotationMatrix = roll.Multiply(pitch.Multiply(yaw));
+    Matrix_4x4 rotationMatrix = yaw.Multiply(pitch.Multiply(roll));
 
     return rotationMatrix;
 }

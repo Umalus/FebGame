@@ -26,9 +26,9 @@ void Transform::UpdateModelMatrix()
 
 Matrix_4x4 Transform::ToMatrix()const{
     //çsóÒÇê∂ê¨
-     Matrix_4x4 transformMatrix = Matrix_4x4::FromTranslation(position).Multiply
-    (Matrix_4x4::FromRotationEuler(rotation).Multiply
-    (Matrix_4x4::FromScale(scale)));
+    Matrix_4x4 transformMatrix = Matrix_4x4::FromTranslation(position)
+        .Multiply(Matrix_4x4::FromRotationEuler(rotation)
+            .Multiply(Matrix_4x4::FromScale(scale)));
 
     return transformMatrix;
 }
