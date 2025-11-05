@@ -1,32 +1,29 @@
-# Prerequisites
-*.d
+# Visual Studio cache and settings
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Build results
+[Bb]in/
+[Oo]bj/
+*.log
 
-# Precompiled Headers
-*.gch
-*.pch
+# CMake intermediate files (if使ってるなら)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# Others
+*.pdb
+*.ipch
+*.idb
+*.ilk
+*.aps
+*.ncb
+*.opendb
+*.tlog
+*.vscode/
