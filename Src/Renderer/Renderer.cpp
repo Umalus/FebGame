@@ -25,6 +25,11 @@ void Renderer::Submit(GameObject* _obj)
 
 void Renderer::DrawAll(Camera* _camera,float _aspect)
 {
+	if (_camera == nullptr)return;
+	//ビュー行列を取得
+		Matrix_4x4 viewMat = _camera->GetViewMatrix();
+		//投影行列を取得
+		Matrix_4x4 ProjectionMat = _camera->GetProjectionMatrix(_aspect);
 	for (auto drawObj : drawObjects) {
 		//メッシュを取得
 		Mesh* mesh = drawObj->GetMesh();
@@ -32,13 +37,11 @@ void Renderer::DrawAll(Camera* _camera,float _aspect)
 		Shader* shader = drawObj->GetShader();
 		//モデル行列を取得
 		Matrix_4x4 modelMat = drawObj->GetTransform()->ToMatrix();
-		//ビュー行列を取得
-		Matrix_4x4 viewMat = _camera->GetViewMatrix();
-		//投影行列を取得
-		Matrix_4x4 ProjectionMat = _camera->GetProjectionMatrix(_aspect);
+		//シェーダーかメッシュがなければ処理をしない
+		if (!mesh || !shader)continue;
 
 		//描画
-		Matrix_4x4 uMVP = modelMat.Multiply(viewMat.Multiply(ProjectionMat));
+		Matrix_4x4 uMVP = ProjectionMat.Multiply(viewMat.Multiply(modelMat));
 		shader->Bind();
 		shader->SetUniformMat4("uMVP", uMVP);
 		mesh->Draw();
