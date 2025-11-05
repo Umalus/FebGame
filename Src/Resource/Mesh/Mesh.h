@@ -49,4 +49,10 @@ public:			//メンバ関数
 	 */
 	void Draw()const;
 
+	/*
+	 * @function	Unload
+	 * @brief		GPUにアップロードしたバッファを削除、解放
+	 */
+	void Unload();
+
 };

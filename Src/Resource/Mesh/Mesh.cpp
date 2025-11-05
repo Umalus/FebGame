@@ -62,3 +62,18 @@ void Mesh::Draw()const
 	glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, nullptr);
 	glBindVertexArray(0);   // 後片付け（任意）
 }
+
+void Mesh::Unload()
+{
+	//GPUリソースの解放
+	glDeleteBuffers(1, &vbo);
+	glDeleteBuffers(1, &ibo);
+	glDeleteVertexArrays(1, &vao);
+	
+	//CPU側のデータのクリア
+	indices.clear();
+	indices.shrink_to_fit();
+
+	vertices.clear();
+	vertices.shrink_to_fit();
+}

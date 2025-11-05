@@ -144,6 +144,8 @@
     <ClCompile Include="Src\GameObject\GameObject.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\Manager\FBXLoader.cpp" />
+    <ClCompile Include="Src\Manager\ModelResourceManager.cpp" />
+    <ClCompile Include="Src\Manager\ResourceManager.cpp" />
     <ClCompile Include="Src\Math\AABB.cpp" />
     <ClCompile Include="Src\Math\Matrix_3x3.cpp" />
     <ClCompile Include="Src\Math\Matrix_4x4.cpp" />
@@ -160,6 +162,7 @@
     <ClInclude Include="libs\glad\include\glad\glad.h" />
     <ClInclude Include="libs\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="Src\Component\Collider.h" />
+    <ClInclude Include="Src\GameConst.h" />
     <ClInclude Include="Src\GameObject\Camera\Camera.h" />
     <ClInclude Include="Src\GameObject\GameObject.h" />
     <ClInclude Include="Src\Info\HitInfo.h" />

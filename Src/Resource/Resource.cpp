@@ -10,7 +10,7 @@ Resource::~Resource()
 {
 }
 
-std::string Resource::GetPath() const
+const std::string Resource::GetPath() const
 {
     return path;
 }
@@ -18,4 +18,14 @@ std::string Resource::GetPath() const
 int Resource::GetID() const
 {
     return id;
+}
+
+void Resource::SetPath(const std::string _filePath)
+{
+    path = _filePath;
+}
+
+void Resource::SetID(int _ID)
+{
+    id = _ID;
 }

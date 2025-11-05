@@ -3,15 +3,21 @@
 #include <map>
 #include <unordered_map>
 #include <iostream>
-#include <../../Src/Resource/Resource.h>
-#include <../../Src/Manager/ModelResourceManager.h>
-
+#include "../../Src/Resource/Resource.h"
+#include "../../Src/Manager/ModelResourceManager.h"
+#include "../GameConst.h"
 /*
  * @class	ResourceManager
  * @brief	素材の一元管理クラス
  * @tips	中央集権化させる(ID,Pathの管理、各ResourceManagerとからロードを呼び出す)
  */
 class ResourceManager : public Singleton<ResourceManager> {
+private:	//メンバ変数
+	int nextModelID;
+	int nextTextureID;
+	int nextSoundID;
+	int nextEffectID;
+
 public:		//メンバ変数
 	std::unordered_map<int, std::string > idToPath;						//IDからパス検索
 	std::unordered_map<std::string, int> pathToID;						//パスからID検索
@@ -33,10 +39,18 @@ public:		//コンストラクタとデストラクタ
 public:		//メンバ関数
 
 	/*
-	 * @function	ModelLoad
-	 * @brief		ModelResourceManagerにロードを指令
+	 * @function	LoadResource
+	 * @brief		タイプを読み取って各マネージャーにロードを指令、配列に保存
 	 * @param[in]	const std::string&	_filePath
+	 * @param[in]	ResourceType _type
 	 */
-	void ModelLoad(const std::string& _filePath);
-	
+	void LoadResource(const std::string& _filePath,ResourceType _type);
+
+	/*
+	 * @function	GetResourceFromID 
+	 * @brief		IDからリソースを取得
+	 * @param[in]	int _ID
+	 * @return		std::shared_ptr
+	 */
+	std::shared_ptr<Resource> GetResourceFromID(int _ID);
 };

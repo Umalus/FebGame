@@ -16,6 +16,8 @@ ModelResource::~ModelResource()
 
 void ModelResource::Load(const std::string& _filePath)
 {
+	//ロード済みなら処理しない
+	if (isLoaded())return;
 	//FBXManagerの初期化
 	FBXLoader loader;
 	bool isFbxDataLoaded = loader.LoadFBX(_filePath);
@@ -36,15 +38,25 @@ void ModelResource::Load(const std::string& _filePath)
 
 void ModelResource::UnLoad()
 {
+	//全てのメッシュを削除
+	for (auto deleteMesh : meshes) {
+		deleteMesh->Unload();
+	}
+	meshes.clear();
+	meshes.shrink_to_fit();
+	id = -1;
+	path = "";
 }
 
 void ModelResource::Clear()
 {
+	meshes.clear();
 }
 
 bool ModelResource::isLoaded() const
 {
-	return false;
+	//IDとパスが両方とも設定されていたらture
+	return id != -1 && !path.empty();
 }
 
 std::vector<MeshData> ModelResource::SearchAllNode(const FBXLoader& _loader)

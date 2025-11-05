@@ -57,7 +57,7 @@ public:	//仮想関数で実装するメンバ関数
 	 * @brief		パスを取得
 	 * @return		std::string
 	 */
-	virtual std::string GetPath()const;
+	virtual const std::string GetPath()const;
 
 	/*
 	 * @function	GetID
@@ -65,7 +65,18 @@ public:	//仮想関数で実装するメンバ関数
 	 * @return		int
 	 */
 	virtual int GetID()const;
-
 	
-
+	/*
+	 * @function	SetPath
+	 * @brief		パスを変更
+	 * @param[in]	const std::string _filePath
+	 */
+	virtual void SetPath(const std::string _filePath);
+	
+	/*
+	 * @function	SetID
+	 * @brief		IDを変更
+	 * @param[in]	int
+	 */
+	virtual void SetID(int _ID);
 };
