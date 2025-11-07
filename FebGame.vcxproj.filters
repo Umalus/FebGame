@@ -64,6 +64,9 @@
     <Filter Include="ソース ファイル\Engine">
       <UniqueIdentifier>{24d5e706-33a2-42fc-830a-b3c86d100c33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\ThirdParty">
+      <UniqueIdentifier>{8c9d0a5d-2eff-4434-8c4d-6f64bf1df73b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp">
@@ -119,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="Src\Manager\ResourceManager.cpp">
       <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Resource\TextureResource.cpp">
+      <Filter>ソース ファイル\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="Src\GameConst.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Resource\TextureResource.h">
+      <Filter>ヘッダー ファイル\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ThirdParty\stb_image.h">
+      <Filter>ヘッダー ファイル\ThirdParty</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
