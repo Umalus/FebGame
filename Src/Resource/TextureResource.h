@@ -7,8 +7,8 @@
  */
 class TextureResource : public Resource {
 private:		//メンバ変数
-	GLuint textureID;
-	std::string texturePath;
+	GLuint textureID;			//テクスチャのID(リソースクラスのIDとは別物)
+	std::string texturePath;	//テクスチャのパス(リソースクラスのパスとは別物)
 public:		//コンストラクタとデストラクタ
 
 	/*

@@ -26,7 +26,7 @@ public:		//メンバ変数
 	 * @function	LoadModel
 	 * @brief		モデルをロード、すでにキャッシュしていたら、生成済みのものを返す
 	 * @param[in]	const std::string& _filePath
-	 * @return		ModelResource*
+	 * @return		std::shared_ptr<ModelResource>
 	 */
 	std::shared_ptr<ModelResource> LoadModel(std::string _filePath);	
 };

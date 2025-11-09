@@ -9,7 +9,7 @@ template <typename T>
 
 class Singleton {
 public:
-	static T& getInstace() {
+	static T& getInstance() {
 		static T instance;
 		return instance;
 	}

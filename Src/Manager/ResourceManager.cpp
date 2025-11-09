@@ -5,6 +5,8 @@ ResourceManager::ResourceManager()
 	,nextTextureID{256}
 	,nextSoundID{512}
 	,nextEffectID{768}
+	,modelManager{}
+	,textureManager{}
 {
 }
 
@@ -27,6 +29,9 @@ void ResourceManager::LoadResource(const std::string& _filePath, ResourceType _t
 		res->SetID(nextModelID++);
 		break;
 	case Texture:
+		res = textureManager.LoadTexture(_filePath);
+		//ID‚ðÝ’è
+		res->SetID(nextTextureID++);
 		break;
 	case Sound:
 		break;

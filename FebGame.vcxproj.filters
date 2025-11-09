@@ -126,6 +126,12 @@
     <ClCompile Include="Src\Resource\TextureResource.cpp">
       <Filter>ソース ファイル\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Manager\TextureManager.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Resource\MaterialResource.cpp">
+      <Filter>ソース ファイル\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\glad\include\glad\glad.h">
@@ -205,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="Src\ThirdParty\stb_image.h">
       <Filter>ヘッダー ファイル\ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Manager\TextureManager.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Resource\MaterialResource.h">
+      <Filter>ヘッダー ファイル\Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

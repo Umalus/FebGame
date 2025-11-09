@@ -146,6 +146,7 @@
     <ClCompile Include="Src\Manager\FBXLoader.cpp" />
     <ClCompile Include="Src\Manager\ModelResourceManager.cpp" />
     <ClCompile Include="Src\Manager\ResourceManager.cpp" />
+    <ClCompile Include="Src\Manager\TextureManager.cpp" />
     <ClCompile Include="Src\Math\AABB.cpp" />
     <ClCompile Include="Src\Math\Matrix_3x3.cpp" />
     <ClCompile Include="Src\Math\Matrix_4x4.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Src\Math\Transform.cpp" />
     <ClCompile Include="Src\Math\Vec3.cpp" />
     <ClCompile Include="Src\Renderer\Renderer.cpp" />
+    <ClCompile Include="Src\Resource\MaterialResource.cpp" />
     <ClCompile Include="Src\Resource\Mesh\Mesh.cpp" />
     <ClCompile Include="Src\Resource\ModelResource.cpp" />
     <ClCompile Include="Src\Resource\Resource.cpp" />
@@ -171,6 +173,7 @@
     <ClInclude Include="Src\Manager\ModelResourceManager.h" />
     <ClInclude Include="Src\Manager\ResourceManager.h" />
     <ClInclude Include="Src\Manager\Singleton.h" />
+    <ClInclude Include="Src\Manager\TextureManager.h" />
     <ClInclude Include="Src\Math\AABB.h" />
     <ClInclude Include="Src\Math\Matrix_3x3.h" />
     <ClInclude Include="Src\Math\Matrix_4x4.h" />
@@ -178,6 +181,7 @@
     <ClInclude Include="Src\Math\Transform.h" />
     <ClInclude Include="Src\Math\Vec3.h" />
     <ClInclude Include="Src\Renderer\Renderer.h" />
+    <ClInclude Include="Src\Resource\MaterialResource.h" />
     <ClInclude Include="Src\Resource\Mesh\Mesh.h" />
     <ClInclude Include="Src\Resource\Mesh\MeshData.h" />
     <ClInclude Include="Src\Resource\Mesh\Vertex.h" />
