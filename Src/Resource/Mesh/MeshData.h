@@ -12,4 +12,5 @@ struct MeshData
 {
 	std::vector<Vertex> vertecies;		//頂点データ
 	std::vector<unsigned int> indices;	//ポリゴン描画順のデータ
+	int materialIndex;
 };

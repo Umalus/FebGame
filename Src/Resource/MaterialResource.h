@@ -22,7 +22,7 @@ enum class MapMode {
  * @class	MaterialResource
  */
 class MaterialResource : public Resource {
-private:		//メンバ変数
+public:		//メンバ変数
 
 
 	Vector3 diffuseColor;		//基本色
@@ -56,7 +56,14 @@ public:			//オーバーライドしたメンバ関数
 	 * @param[in]	const std::string	_filePath
 	 */
 	void Load(const std::string& _filePath)override;
-
+	
+	/*
+	 * @function	LoadFromFBX
+	 * @brief		FBXから直接マテリアルを生成
+	 * @param[in]	FbxSurfaceMaterial* mat
+	 */
+	void LoadFromFBX(FbxSurfaceMaterial* mat);
+	
 	/*
 	 * @function	UnLoad
 	 * @brief		テクスチャをアンロード
@@ -104,5 +111,4 @@ private:		//メンバ関数
 	 * @return		std::shared_ptr<TextureResource>
 	 */
 	std::shared_ptr<TextureResource> GetTexture(FbxSurfaceMaterial* _mat, MapMode _mapMode);
-
 };

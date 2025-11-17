@@ -56,7 +56,7 @@ int main() {
 	data.indices = indices;
 
 	testMesh.SetData(data);
-	testMesh.UpdataToGPU();
+	testMesh.UpdateToGPU();
 
 	Matrix_4x4 mvp = Matrix_4x4::Identity();
 	testShader.SetUniformMat4("uMVP", mvp);

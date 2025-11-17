@@ -14,7 +14,8 @@ private:		//メンバ変数
 	std::vector<unsigned int> indices;
 	GLsizei indexCount;
 
-	GLuint vao, vbo, ibo;
+	GLuint vao, vbo, ibo;	
+	int materialIndex;
 
 public:			//コンストラクタとデストラクタ
 
@@ -41,7 +42,7 @@ public:			//メンバ関数
 	 * @function	UploadGPU
 	 * @brief		GPUにデータをアップロード
 	 */
-	void UpdataToGPU();
+	void UpdateToGPU();
 
 	/*
 	 * @function		Draw
@@ -55,4 +56,10 @@ public:			//メンバ関数
 	 */
 	void Unload();
 
+	/*
+	 * @function	SetMaterialIndex
+	 * @brief		マテリアルのインデックスの変更
+	 * @param[in]	int _index
+	 */
+	void SetMaterialIndex(int _index);
 };

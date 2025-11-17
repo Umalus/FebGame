@@ -50,6 +50,22 @@ public:		//メンバ関数
 	 */
 	void SetUniformMat4(const std::string& _uMVP,const Matrix_4x4& _matrix);
 
+	/*
+	 * @function	SetUniformVec3
+	 * @brief		Vector3をUniform変数に返す
+	 * @param[in]	const std::string& _uColor
+	 * @param[in]	const Vector3& _color
+	 */
+	void SetUniformVec3(const std::string& _uColor, const Vector3& _color);
+	
+	/*
+	 * @function	SetUniformInt
+	 * @brief		テクスチャのスロット番号をセット
+	 * @param[in]	const std::string& _uMap
+	 * @param[in]	int _slot
+	 */
+	void SetUniformInt(const std::string& _uMap, int _slot);
+
 private:		//メンバ関数
 
 	/*

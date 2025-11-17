@@ -5,6 +5,7 @@ Mesh::Mesh()
 	,vao{}
 	,vbo{}
 	,ibo{}
+	,materialIndex{-1}
 {
 }
 
@@ -24,10 +25,10 @@ void Mesh::SetData(MeshData _meshData)
 	this->vertices = _meshData.vertecies;
 	this->indices = _meshData.indices;
 	indexCount = indices.size();
-	UpdataToGPU();
+	UpdateToGPU();
 }
 
-void Mesh::UpdataToGPU()
+void Mesh::UpdateToGPU()
 {
 	//vao‚ğ¶¬‚µ‚ÄƒoƒCƒ“ƒh
 	glGenVertexArrays(1, &vao);
@@ -76,4 +77,9 @@ void Mesh::Unload()
 
 	vertices.clear();
 	vertices.shrink_to_fit();
+}
+
+void Mesh::SetMaterialIndex(int _index)
+{
+	materialIndex = _index;
 }

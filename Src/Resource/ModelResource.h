@@ -2,10 +2,12 @@
 
 #include <fbxsdk.h>
 #include "Resource.h"
+#include "MaterialResource.h"
 #include "../Manager/FBXLoader.h"
 #include "Mesh/Mesh.h"
 class ModelResource : public Resource {
 private:
+	std::vector<std::shared_ptr<MaterialResource>> materials;
 	std::vector<std::shared_ptr<Mesh>> meshes;
 
 public:		//コンストラクタとデストラクタ

@@ -90,6 +90,12 @@ bool TextureResource::isLoaded() const
 	return textureID != -1 && !texturePath.empty();
 }
 
+void TextureResource::Bind(GLuint _index)
+{
+	glActiveTexture(GL_TEXTURE0 + _index);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+}
+
 int TextureResource::GetTextureID() const
 {
 	return textureID;

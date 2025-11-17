@@ -4,6 +4,7 @@
 #include "../Math/AABB.h"
 #include "../Math/Matrix_4x4.h"
 #include "../Resource/Mesh/Mesh.h"
+#include "../Resource/MaterialResource.h"
 #include "../Resource/Shader/Shader.h"
 
 #include <string>
@@ -14,6 +15,7 @@ protected :		//メンバ変数
 	std::unique_ptr<Transform> transform;
 	std::unique_ptr<Mesh> mesh;
 	std::unique_ptr<Shader> shader;
+	std::unique_ptr<MaterialResource> material;
 	std::string name;		//オブジェクトの名前
 	
 	GameObject* parent;
@@ -73,15 +75,22 @@ public:		//ゲッター
 	/*
 	 * @function	GetMesh
 	 * @brief		メッシュを取得
-	 * @return		Mesh&
+	 * @return		Mesh*
 	 */
 	Mesh* GetMesh()const;
 	
 	/*
 	 * @function	GetShader
 	 * @brief		シェーダーを取得
-	 * @return		Shader&
+	 * @return		Shader*
 	 */
 	Shader* GetShader()const;
+	
+	/*
+	 * @function	GetMaterial
+	 * @brief		マテリアルを取得
+	 * @return		MaterialResource*
+	 */
+	MaterialResource* GetMaterial()const;
 
 };

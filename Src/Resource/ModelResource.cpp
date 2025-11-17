@@ -7,6 +7,7 @@
 
 ModelResource::ModelResource()
 	:meshes{}
+	,materials{}
 {
 }
 
@@ -24,13 +25,28 @@ void ModelResource::Load(const std::string& _filePath)
 	//ロード出来ていなければ早期リターン
 	if (!isFbxDataLoaded)
 		return;
+	
+	//Materialを取得
+	int materialCount = loader.GetScene()->GetMaterialCount();
+	for (int i = 0; i < materialCount; i++) {
+		FbxSurfaceMaterial* mat = loader.GetScene()->GetMaterial(i);
+		if (!mat) continue;
+
+		auto materialRes = std::make_shared<MaterialResource>();
+		materialRes->LoadFromFBX(mat);
+		materials.push_back(materialRes);
+
+	}
+	
 	//MeshDataを取得
 	std::vector<MeshData> allMeshData = SearchAllNode(loader);
 
+	//メッシュを生成して挿入
 	for (auto& data : allMeshData) {
-		std::shared_ptr<Mesh> createdMesh;
+		auto createdMesh = std::shared_ptr<Mesh>();
 		createdMesh->SetData(data);
-		createdMesh->UpdataToGPU();
+		createdMesh->UpdateToGPU();
+		createdMesh->SetMaterialIndex(data.materialIndex);
 		meshes.push_back(createdMesh);
 	}
 	
@@ -81,6 +97,8 @@ void ModelResource::SearceNodeRecursion(FbxNode* _node, std::vector<MeshData>& _
 	//メッシュからデータを抽出
 	if (fbxMesh && fbxMesh->GetElementUV()) {
 		MeshData meshData = SearchNode(fbxMesh);
+		int matIndex = _node->GetMaterialCount() > 0 ? 0 : -1;
+		meshData.materialIndex = matIndex;
 		_meshes.push_back(meshData);
 	}
 	//全てのルートノード探索が完了するまで再帰

@@ -4,6 +4,7 @@ GameObject::GameObject()
 	:transform{std::make_unique<Transform> (Vector3::zero, Vector3::zero,Vector3::zero)}
 	,mesh{std::make_unique<Mesh>()}
 	,shader{std::make_unique<Shader>()}
+	,material{std::make_unique<MaterialResource>()}
 	,parent{this}
 {
 }
@@ -12,6 +13,7 @@ GameObject::GameObject(Vector3 _pos, Vector3 _rotate, Vector3 _scale)
 	:transform{ std::make_unique<Transform> (_pos, _rotate,_scale)}
 	,mesh{std::make_unique<Mesh>()}
 	,shader{ std::make_unique<Shader>() }
+	,material{ std::make_unique<MaterialResource>() }
 	,parent{ this }
 {
 }
@@ -49,4 +51,9 @@ Mesh* GameObject::GetMesh() const
 Shader* GameObject::GetShader()const
 {
 	return shader.get();
+}
+
+MaterialResource* GameObject::GetMaterial() const
+{
+	return material.get();
 }

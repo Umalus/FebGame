@@ -57,6 +57,19 @@ void MaterialResource::Load(const std::string& _filePath)
 	}
 }
 
+void MaterialResource::LoadFromFBX(FbxSurfaceMaterial* _mat) {
+	diffuseColor = GetColor(_mat, ColorMode::Diffuse);
+	specularColor = GetColor(_mat, ColorMode::Specular);
+	emissiveColor = GetColor(_mat, ColorMode::Emissive);
+
+	diffuseMap = GetTexture(_mat, MapMode::Diffuse);
+	normalMap = GetTexture(_mat, MapMode::Normal);
+	specularMap = GetTexture(_mat, MapMode::Specular);
+	emissiveMap = GetTexture(_mat, MapMode::Emissive);
+	opacityMap = GetTexture(_mat, MapMode::Opacity);
+}
+
+
 void MaterialResource::UnLoad()
 {
 }

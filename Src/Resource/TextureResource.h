@@ -50,6 +50,13 @@ public:		//継承したメンバ関数
 	 */
 	bool isLoaded()const override;
 
+	/*
+	 * @function	Bind
+	 * @brief		描画時のバインド
+	 * @param[in]	GLuint	_index
+	 */
+	void Bind(GLuint _index);
+
 public:		//ゲッターのみ
 
 	/*

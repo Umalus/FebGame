@@ -63,6 +63,19 @@ void Shader::SetUniformMat4(const std::string& _uMVP, const Matrix_4x4& _matrix)
     glUniformMatrix4fv(GetUniformLocation(_uMVP), 1, GL_FALSE,data.data() );
 }
 
+void Shader::SetUniformVec3(const std::string& _uColor, const Vector3& _color)
+{
+    GLint location = glGetUniformLocation(programID, _uColor.c_str());
+    glUniform3fv(location, 1, &_color.x);
+    
+}
+
+void Shader::SetUniformInt(const std::string& _uMap, int _slot)
+{
+    GLint location = glGetUniformLocation(programID, _uMap.c_str());
+    glUniform1i(location, _slot);
+}
+
 std::string Shader::LoadFile(const std::string& _filePath)
 {
     //ÉtÉ@ÉCÉãì«Ç›çûÇ›
