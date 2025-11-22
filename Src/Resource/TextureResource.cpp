@@ -6,7 +6,7 @@
 #include <glad/glad.h>
 
 TextureResource::TextureResource()
-	:textureID{-1}
+	:textureID{}
 	,texturePath{""}
 {
 }
@@ -19,7 +19,7 @@ TextureResource::~TextureResource()
 void TextureResource::Load(const std::string& _filePath)
 {
 	//ロード済みなら早期リターン
-	if (isLoaded)return;
+	if (isLoaded())return;
 
 	//画像を読み込む
 	//FBXManagerの初期化

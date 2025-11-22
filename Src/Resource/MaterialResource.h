@@ -3,6 +3,8 @@
 #include "../Math/Vec3.h"
 #include "TextureResource.h"
 #include "../Manager/FBXLoader.h"
+#include <fbxsdk.h>
+
 enum class ColorMode {
 	Diffuse,
 	Specular,

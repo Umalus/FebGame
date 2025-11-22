@@ -1,6 +1,7 @@
 #pragma once
 #include "Resource.h"
-
+#include <glad/glad.h>
+#include <fbxsdk.h>
 /*
  * @class	TextureResource
  * @brief	テクスチャのリソース

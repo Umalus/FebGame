@@ -27,3 +27,14 @@ Makefile
 *.opendb
 *.tlog
 *.vscode/
+
+# FBX SDK / 外部ライブラリ
+*.lib
+*.dll
+
+# ビルド成果物
+/bin/
+/obj/
+/Debug/
+/Release/
+

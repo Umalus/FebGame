@@ -77,3 +77,4 @@ void Renderer::DrawAll(Camera* _camera, float _aspect)
 			mesh->Draw();
 		}
 	}
+}
