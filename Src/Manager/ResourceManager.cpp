@@ -8,6 +8,8 @@ ResourceManager::ResourceManager()
 	,modelManager{}
 	,textureManager{}
 {
+	modelManager = ModelResourceManager();
+	textureManager = TextureResourceManager();
 }
 
 ResourceManager::~ResourceManager()
@@ -47,6 +49,10 @@ void ResourceManager::LoadResource(const std::string& _filePath, ResourceType _t
 	pathToID[res->GetPath()] = res->GetID();
 	//リソースを保存
 	idToResource[res->GetID()] = res;
+#if _DEBUG
+	std::cerr << "読み込み成功！！" << std::endl;
+#endif
+
 }
 
 std::shared_ptr<Resource> ResourceManager::GetResourceFromID(int _ID)

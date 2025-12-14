@@ -10,7 +10,6 @@ FBXLoader::FBXLoader()
 	if (!fbxManager)return;
 	FbxIOSettings* ioSettings = FbxIOSettings::Create(fbxManager, IOSROOT);
 	fbxManager->SetIOSettings(ioSettings);
-
 }
 
 FBXLoader::~FBXLoader()

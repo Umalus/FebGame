@@ -203,7 +203,7 @@ public:
 /** FbxAutoPtr mimics the \c auto_ptr class template implementation available in the C++ Standard Library. The \c auto_ptr template
 * class describes an object that stores a pointer to a single allocated object of type Type* that ensures that the object to which
 * it points gets destroyed automatically when control leaves a scope. */
-template<class Type, class Policy=FbxDeletionPolicyDefault<Type> > class FbxAutoPtr
+template<class Type, class Policy= fbxsdk::FbxDeletionPolicyDefault<Type> > class FbxAutoPtr
 {
 public:
 	//! Construct from a pointer.
@@ -307,7 +307,7 @@ private:
 	int  count;
 };
 
-template<class Type, class Policy=FbxDeletionPolicyDefault<Type> > class FbxSharedPtr
+template<class Type, class Policy=fbxsdk::FbxDeletionPolicyDefault<Type> > class FbxSharedPtr
 {
 public:
 	// Default constructor.

@@ -1,7 +1,10 @@
 #include "MaterialResource.h"
 #include "../Manager/ResourceManager.h"
+#include <filesystem>
 
 MaterialResource::MaterialResource()
+	: shininess{ -1.0f }
+	, transparency{ -1.0f }
 {
 }
 
@@ -134,10 +137,16 @@ std::shared_ptr<TextureResource> MaterialResource::GetTexture(FbxSurfaceMaterial
 
 	//nullŠm”F
 	if (!texFile)return nullptr;
+	
+	std::filesystem::path texPath(texFile->GetFileName());
+	std::string justName = texPath.filename().string(); // "xxx.png"
+
+
 
 	auto& resourManager = ResourceManager::getInstance();
 
-	std::string texFilePath = texFile->GetFileName();
+
+	std::string texFilePath = "Res/Texture/" + justName;
 	resourManager.LoadResource(texFilePath, Texture);
 	std::shared_ptr<Resource> texRes = resourManager.GetResourceFromID(resourManager.pathToID[texFilePath]);
 	std::shared_ptr<TextureResource> tex = std::dynamic_pointer_cast<TextureResource>(texRes);

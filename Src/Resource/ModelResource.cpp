@@ -43,7 +43,7 @@ void ModelResource::Load(const std::string& _filePath)
 
 	//メッシュを生成して挿入
 	for (auto& data : allMeshData) {
-		auto createdMesh = std::shared_ptr<Mesh>();
+		auto createdMesh = std::make_shared<Mesh>();
 		createdMesh->SetData(data);
 		createdMesh->UpdateToGPU();
 		createdMesh->SetMaterialIndex(data.materialIndex);
@@ -92,15 +92,26 @@ void ModelResource::SearceNodeRecursion(FbxNode* _node, std::vector<MeshData>& _
 	//_nodeが無ければ処理しない
 	if (!_node)return;
 
+	std::cout << _node->GetName() << std::endl;
+
 	//ノードからメッシュを取得
 	FbxMesh* fbxMesh = _node->GetMesh();
 	//メッシュからデータを抽出
-	if (fbxMesh && fbxMesh->GetElementUV()) {
+	/*if (fbxMesh) {
+		MeshData meshData = SearchNode(fbxMesh);
+		int matIndex = _node->GetMaterialCount() > 0 ? 0 : -1;
+		meshData.materialIndex = matIndex;
+		_meshes.push_back(meshData);
+	}*/
+
+	if (fbxMesh) {
+		std::cout << "Mesh found at node: " << _node->GetName() << std::endl;
 		MeshData meshData = SearchNode(fbxMesh);
 		int matIndex = _node->GetMaterialCount() > 0 ? 0 : -1;
 		meshData.materialIndex = matIndex;
 		_meshes.push_back(meshData);
 	}
+
 	//全てのルートノード探索が完了するまで再帰
 	for (int i = 0; i < _node->GetChildCount(); ++i) {
 		SearceNodeRecursion(_node->GetChild(i), _meshes);
