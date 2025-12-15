@@ -7,6 +7,7 @@ Camera::Camera()
 	,fov{70}
 	, prevCursorPoint{}
 {
+	Start();
 }
 
 Camera::Camera(const Vector3& _pos, const Vector3& _upDir, float _pitch, float _yaw)
@@ -24,6 +25,9 @@ Camera::~Camera()
 
 void Camera::Start()
 {
+	front = Vector3(0, 0, -1);
+	glEnable(GL_DEPTH_TEST);
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 }
 
 void Camera::Update(float _deltaTime)

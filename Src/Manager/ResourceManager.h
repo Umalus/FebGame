@@ -55,4 +55,15 @@ public:		//ƒƒ“ƒoŠÖ”
 	 * @return		std::shared_ptr
 	 */
 	std::shared_ptr<Resource> GetResourceFromID(int _ID);
+
+	template<typename T>
+	std::shared_ptr<T> GetResourceAs(int _ID);
 };
+
+
+template<typename T>
+inline std::shared_ptr<T> ResourceManager::GetResourceAs(int _ID)
+{
+	auto res = GetResourceFromID(_ID);
+	return std::dynamic_pointer_cast<T>(res);
+}

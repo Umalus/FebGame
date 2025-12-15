@@ -1,5 +1,2 @@
-﻿  ResourceManager.cpp
-libfbxsdk-mt.lib(WriteUtil.cpp.obj) : warning LNK4099: PDB 'alembic-mt.pdb' が 'libfbxsdk-mt.lib(WriteUtil.cpp.obj)' で、または 'C:\Users\tende\Desktop\C++\FebGame\x64\Debug\alembic-mt.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
-libfbxsdk-mt.lib(AwImpl.cpp.obj) : warning LNK4099: PDB 'alembic-mt.pdb' が 'libfbxsdk-mt.lib(AwImpl.cpp.obj)' で、または 'C:\Users\tende\Desktop\C++\FebGame\x64\Debug\alembic-mt.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
-libfbxsdk-mt.lib(fbxgeometryconverter.cxx.obj) : warning LNK4099: PDB 'libfbxsdk-mt.pdb' が 'libfbxsdk-mt.lib(fbxgeometryconverter.cxx.obj)' で、または 'C:\Users\tende\Desktop\C++\FebGame\x64\Debug\libfbxsdk-mt.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+﻿  GameObject.cpp
   FebGame.vcxproj -> C:\Users\tende\Desktop\C++\FebGame\x64\Debug\FebGame.exe

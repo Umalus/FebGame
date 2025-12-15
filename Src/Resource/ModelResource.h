@@ -49,7 +49,25 @@ public:		//継承するメンバ関数
 	 * @return		bool
 	 */
 	bool isLoaded()const override;
+public:			//ゲッター
 
+	/*
+	 * @function	GetMaterial
+	 * @brief		マテリアルを取得
+	 * @param[in]	int _index
+	 * @return		std::shared_ptr<MaterialResource>
+	 */
+	std::shared_ptr<MaterialResource> GetMaterial(int _index);
+	
+	/*
+	 * @function	GetMesh
+	 * @brief		メッシュを取得
+	 * @param[in]	int _index
+	 * @return		std::shared_ptr<Mesh>
+	 */
+	std::shared_ptr<Mesh> GetMesh(int _index);
+
+	
 private:		//描画処理に必要な変換や便利関数
 
 	/*

@@ -5,19 +5,21 @@
 #include "../Math/Matrix_4x4.h"
 #include "../Resource/Mesh/Mesh.h"
 #include "../Resource/MaterialResource.h"
+#include "../Resource/ModelResource.h"
 #include "../Resource/Shader/Shader.h"
 
 #include <string>
 #include <vector>
 #include <iostream>
 class GameObject {
-protected :		//メンバ変数
+protected:		//メンバ変数
 	std::unique_ptr<Transform> transform;
-	std::unique_ptr<Mesh> mesh;
-	std::unique_ptr<Shader> shader;
-	std::unique_ptr<MaterialResource> material;
+	std::shared_ptr<Mesh> mesh;
+	std::shared_ptr<Shader> shader;
+	std::shared_ptr<ModelResource> model;
+	std::shared_ptr<MaterialResource> material;
 	std::string name;		//オブジェクトの名前
-	
+
 	GameObject* parent;
 	std::vector<GameObject*> children;
 
@@ -50,7 +52,7 @@ public:			//メンバ関数
 	 * @brief		生成されたタイミングで呼ばれる関数
 	 */
 	virtual void Awake();
-	
+
 	/*
 	 * @function	Start
 	 * @brief		更新処理の1フレーム前に呼び出される
@@ -71,26 +73,57 @@ public:		//ゲッター
 	 * @return		Transform&
 	 */
 	Transform* GetTransform()const;
-	
+
 	/*
 	 * @function	GetMesh
 	 * @brief		メッシュを取得
 	 * @return		Mesh*
 	 */
 	Mesh* GetMesh()const;
-	
+
 	/*
 	 * @function	GetShader
 	 * @brief		シェーダーを取得
 	 * @return		Shader*
 	 */
 	Shader* GetShader()const;
-	
+
 	/*
 	 * @function	GetMaterial
 	 * @brief		マテリアルを取得
 	 * @return		MaterialResource*
 	 */
 	MaterialResource* GetMaterial()const;
+
+public:		//セッター
+
+	/*
+	 * @function	SetMesh
+	 * @brief		メッシュを変更
+	 * @param[in]	std::shared_ptr _mesh
+	 */
+	void SetMseh(std::shared_ptr<Mesh> _mesh);
+
+	/*
+	 * @function	SetTransform
+	 * @brief		シェーダーを変更
+	 * @param[in]	std::shared_ptr<Shader> _newShader
+	 */
+	void SetShader(std::shared_ptr<Shader> _newShader);
+
+	/*
+	 * @function	SetMaterial
+	 * @brief		マテリアルを変更
+	 * @param[in]	std::shared_ptr<MaterialResource> _newMaterial
+	 */
+	void SetMaterial(std::shared_ptr<MaterialResource> _newMaterial);
+
+	/*
+	 * @function	SetModel
+	 * @brief		モデルを変更
+	 * @param[in]	std::shared_ptr<ModelResource> _newModel
+	 */
+	void SetModel(std::shared_ptr<ModelResource> _newModel);
+
 
 };

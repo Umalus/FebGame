@@ -29,7 +29,7 @@ public:		//コンストラクタとデストラクタ
 	 */
 	~Transform();
 public:		//メンバ関数
-	
+
 	/*
 	 * @function	UpdateModelMatrix
 	 * @brief		モデル行列の更新
@@ -81,14 +81,14 @@ public:		//セッター
 	 * @return		Vector3
 	 */
 	inline Vector3 GetForward() const;
-	
+
 	/*
 	 * @function	GetRight
 	 * @brief		右方向の取得
 	 * @return		Vector3
 	 */
 	inline Vector3 GetRight() const;
-	
+
 	/*
 	 * @function	GetUp
 	 * @brief		上方向の取得
@@ -117,7 +117,9 @@ public:		//セッター
 	 */
 	Vector3 GetScale() const;
 
+public:		//オペレーターのオーバーライド
 
+	Transform operator=(const Transform& _other)const;
 
 };
 

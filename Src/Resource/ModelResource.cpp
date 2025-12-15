@@ -75,6 +75,16 @@ bool ModelResource::isLoaded() const
 	return id != -1 && !path.empty();
 }
 
+std::shared_ptr<MaterialResource> ModelResource::GetMaterial(int _index)
+{
+	return materials[_index];
+}
+
+std::shared_ptr<Mesh> ModelResource::GetMesh(int _index)
+{
+	return meshes[_index];
+}
+
 std::vector<MeshData> ModelResource::SearchAllNode(const FBXLoader& _loader)
 {
 	//全てのノードが入る配列

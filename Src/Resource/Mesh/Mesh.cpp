@@ -55,6 +55,8 @@ void Mesh::UpdateToGPU()
 	//Vaoをアンバインド
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	indexCount = static_cast<int>(indices.size());
 }
 
 void Mesh::Draw()const

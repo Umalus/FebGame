@@ -1,7 +1,7 @@
 #include "Transform.h"
 #include <array>
 Transform::Transform()
-    :position{Vector3::zero}
+    :position{ Vector3(0,0,-5) }
     ,rotation{Vector3::zero}
     ,scale{Vector3::zero}
     ,modelMatrix{}
@@ -43,15 +43,15 @@ void Transform::LookAt(const Vector3& _pos){
     rotation = Vector3(pitch, yaw, 0.0f);
 }
 
-inline void Transform::SetPosition(Vector3 _pos){
+void Transform::SetPosition(Vector3 _pos){
     position = _pos;
 }
 
-inline void Transform::SetRotation(Vector3 _rota){
+void Transform::SetRotation(Vector3 _rota){
     rotation = _rota;
 }
 
-inline void Transform::SetScale(Vector3 _scale){
+void Transform::SetScale(Vector3 _scale){
     scale = _scale;
 }
 
@@ -81,3 +81,9 @@ Vector3 Transform::GetScale() const
 {
     return scale;
 }
+
+Transform Transform::operator=(const Transform& _other) const
+{
+    return Transform(_other);
+}
+
