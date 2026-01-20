@@ -26,6 +26,13 @@ Camera::~Camera()
 void Camera::Start()
 {
 	front = Vector3(0, 0, -1);
+	up = Vector3(0, 1, 0);
+
+	transform->SetPosition(Vector3(0, 0, -5));
+
+	yaw = -90.0f;
+	pitch = 0.0f;
+
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 }
@@ -74,10 +81,9 @@ Matrix_4x4 Camera::GetViewMatrix()
 	Vector3 cameraPos = transform->GetPosition();
 	//Œ©‚Ä‚¢‚é•ûŒü‚ğæ“¾
 	Vector3 lookDir = cameraPos + front;
-	//ã•ûŒüæ“¾
-	Vector3 up = Vector3::up;
-
 	Matrix_4x4 viewMat = Matrix_4x4::LookAt(cameraPos, lookDir, up);
+
+	viewMat.DebuPrint();
 
 	return viewMat;
 }
@@ -105,6 +111,9 @@ Matrix_4x4 Camera::Perscpective(float _fov, float _aspect, float _near, float _f
 	std::array<float, 4> y = { 0.0f, yScale, 0.0f, 0.0f };
 	std::array<float, 4> z = { 0.0f, 0.0f, zScale, zTrans };
 	std::array<float, 4> w = { 0.0f, 0.0f, -1.0f, 0.0f };
+	Matrix_4x4 result = Matrix_4x4(x, y, z, w);
 
-	return Matrix_4x4(x,y,z,w);
+	result.DebuPrint();
+
+	return result;
 }

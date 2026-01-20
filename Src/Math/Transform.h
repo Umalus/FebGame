@@ -59,21 +59,21 @@ public:		//セッター
 	 * @brief		位置の変更
 	 * @param[in]	Vector3 _pos	変更する値
 	 */
-	inline void SetPosition(Vector3 _pos);
+	void SetPosition(Vector3 _pos);
 
 	/*
 	 * @function	SetRotation
 	 * @brief		回転の変更
 	 * @param[in]	Vector3 _rota	変更する値
 	 */
-	inline void SetRotation(Vector3 _rota);
+	void SetRotation(Vector3 _rota);
 
 	/*
 	 * @function	SetScale
 	 * @brief		拡縮の変更
 	 * @param[in]	Vector3 _pos	変更する値
 	 */
-	inline void SetScale(Vector3 _pos);
+	void SetScale(Vector3 _pos);
 
 	/*
 	 * @function	GetForward

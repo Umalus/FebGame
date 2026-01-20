@@ -78,4 +78,6 @@ public:		//ƒƒ“ƒoŠÖ”
 	 * @param[in]	float _far		ƒJƒƒ‰‚©‚ç‚ÌÅ’·‹——£
 	 */
 	Matrix_4x4 Perscpective(float _fov, float _aspect, float _near, float _far);
+
+	void DebugPrint()const;
 };

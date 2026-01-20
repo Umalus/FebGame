@@ -47,6 +47,7 @@ int main() {
 	pTest->SetModel(ResourceManager::getInstance().GetResourceAs<ModelResource>(0));
 
 	Camera* pCamera = new Camera();
+	pCamera->Start();
 
 	Renderer* pRender = new Renderer();
 	pRender->Submit(pTest);

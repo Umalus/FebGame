@@ -61,7 +61,11 @@ void Shader::SetUniformMat4(const std::string& _uMVP, const Matrix_4x4& _matrix)
     //uMVP行列を使用
     glUseProgram(programID);
     std::array<float, 16> data = _matrix.GetDataArray();
-    glUniformMatrix4fv(GetUniformLocation(_uMVP), 1, GL_FALSE,data.data() );
+    glUniformMatrix4fv(GetUniformLocation(_uMVP), 1, GL_TRUE,data.data() );
+
+    GLint loc = glGetUniformLocation(programID, "uMVP");
+    std::cout << "uMVP loc = " << loc << std::endl;
+
 }
 
 void Shader::SetUniformVec3(const std::string& _uColor, const Vector3& _color)
@@ -125,6 +129,14 @@ GLint Shader::GetUniformLocation(const std::string& _name)
 {
     //ロケーションを返す
     GLint location = glGetUniformLocation(programID, _name.c_str());
+
+    GLint success;
+    glGetProgramiv(programID, GL_LINK_STATUS, &success);
+    if (!success) {
+        char infoLog[512];
+        glGetProgramInfoLog(programID, 512, NULL, infoLog);
+        std::cerr << "Program Link Error:\n" << infoLog << std::endl;
+    }
 
 
     return location;

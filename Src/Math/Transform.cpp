@@ -3,12 +3,13 @@
 Transform::Transform()
     :position{ Vector3(0,0,-5) }
     ,rotation{Vector3::zero}
-    ,scale{Vector3::zero}
+    , scale{ Vector3(1,1,1)}
     ,modelMatrix{}
 {
+    UpdateModelMatrix();
 }
 
-Transform::Transform(Vector3 _pos, Vector3 _rota = Vector3::zero, Vector3 _scale = Vector3::zero)
+Transform::Transform(Vector3 _pos, Vector3 _rota = Vector3::zero, Vector3 _scale = Vector3::one)
     :position{_pos}
     ,rotation{_rota}
     ,scale{_scale}
@@ -26,10 +27,12 @@ void Transform::UpdateModelMatrix()
 
 Matrix_4x4 Transform::ToMatrix()const{
     //çsóÒÇê∂ê¨
-    Matrix_4x4 transformMatrix = Matrix_4x4::FromTranslation(position)
-        .Multiply(Matrix_4x4::FromRotationEuler(rotation)
-            .Multiply(Matrix_4x4::FromScale(scale)));
+    Matrix_4x4 S = Matrix_4x4::FromScale(scale);
+    Matrix_4x4 R = Matrix_4x4::FromRotationEuler(rotation);
+    Matrix_4x4 T = Matrix_4x4::FromTranslation(position);
 
+    Matrix_4x4 transformMatrix = S.Multiply(R).Multiply(T);
+    transformMatrix.DebuPrint();
     return transformMatrix;
 }
 
@@ -45,14 +48,17 @@ void Transform::LookAt(const Vector3& _pos){
 
 void Transform::SetPosition(Vector3 _pos){
     position = _pos;
+    UpdateModelMatrix();
 }
 
 void Transform::SetRotation(Vector3 _rota){
     rotation = _rota;
+    UpdateModelMatrix();
 }
 
 void Transform::SetScale(Vector3 _scale){
     scale = _scale;
+    UpdateModelMatrix();
 }
 
 inline Vector3 Transform::GetForward() const{

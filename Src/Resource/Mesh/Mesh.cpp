@@ -1,4 +1,5 @@
 #include "Mesh.h"
+#include <iostream>
 
 Mesh::Mesh()
 	:indexCount(-1)
@@ -44,23 +45,27 @@ void Mesh::UpdateToGPU()
 
 	//頂点属性を設定
 	//ポジション
-	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,Vertex::position));
+	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,position));
 	glEnableVertexAttribArray(0);
 	//法線
-	glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,Vertex::normal));
+	glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,normal));
 	glEnableVertexAttribArray(1);
 	//uv
-	glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,Vertex::uv));
+	glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,uv));
 	glEnableVertexAttribArray(2);
 	//Vaoをアンバインド
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	indexCount = static_cast<int>(indices.size());
+	std::cout << "indexCount = " << indexCount << std::endl;
+
 }
 
 void Mesh::Draw()const
 {
+	std::cout << "[Draw] vao=" << vao << " indexCount=" << indexCount << std::endl;
+
 	glBindVertexArray(vao); // VAOをバインド
 	glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, nullptr);
 	glBindVertexArray(0);   // 後片付け（任意）

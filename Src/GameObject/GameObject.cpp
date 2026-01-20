@@ -29,7 +29,7 @@ void GameObject::Awake()
 
 void GameObject::Start()
 {
-
+	transform->SetPosition(Vector3(0, 0, -5));
 }
 
 /*

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "../Manager/ResourceManager.h"
+#include "../../Src/Math/Vector2.h"
 
 
 
@@ -154,12 +155,25 @@ MeshData ModelResource::SearchNode(FbxMesh* _mesh)
 				v.normal = FBXVec4ToVec3(normal);
 
 			//UV座標を抽出
-			const char* uvSetName = _mesh->GetElementUV()->GetName();
-			FbxVector2 uv;
-			bool unmapped;
-			bool hasUv = _mesh->GetPolygonVertexUV(i, j, uvSetName, uv, unmapped);
-			if (hasUv && !unmapped)
-				v.uv = Vector3(uv[0], uv[1], 0);
+			FbxGeometryElementUV* uvElement = _mesh->GetElementUV();
+			if (!uvElement) {
+				v.uv = Vector2(0.0f, 0.0f);
+			}
+			else {
+				const char* uvSetName = uvElement->GetName();
+				FbxVector2 uv;
+				bool unmapped = false;
+
+				bool hasUv = _mesh->GetPolygonVertexUV(i, j, uvSetName, uv, unmapped);
+
+				if (hasUv && !unmapped) {
+					v.uv = Vector2(static_cast<float>(uv[0]), static_cast<float>(uv[1]));
+				}
+				else {
+					v.uv = Vector2(0.0f, 0.0f);
+				}
+			}
+
 			
 			//作られた頂点情報を配列に挿入
 			fbxVertecies.push_back(v);

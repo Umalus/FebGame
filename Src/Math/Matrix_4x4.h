@@ -12,12 +12,12 @@ public:			//コンストラクタとデストラクタ
 	 * @brief	//デフォルトコンストラクタ
 	 */
 	Matrix_4x4();
-	
+
 	/*
 	 * @brief	//コンストラクタのオーバーロード
 	 */
-	Matrix_4x4(std::array<float,4> _x,std::array<float,4> _y, std::array<float,4> _z,std::array<float,4> _w);
-	
+	Matrix_4x4(std::array<float, 4> _x, std::array<float, 4> _y, std::array<float, 4> _z, std::array<float, 4> _w);
+
 	/*
 	 * @brief	//デストラクタ
 	 */
@@ -25,7 +25,7 @@ public:			//コンストラクタとデストラクタ
 
 public:			//メンバ関数
 
-	
+
 
 	/*
 	 * @function	Transpose
@@ -56,7 +56,7 @@ public:			//メンバ関数
 	 * @param[in]	int _column		除外する列のインデックス
 	 * @return		Matrix_3x3		小行列
 	 */
-	Matrix_3x3 PickupMiniQueue(int _row,int _column)const;
+	Matrix_3x3 PickupMiniQueue(int _row, int _column)const;
 
 	/*
 	 * @function	MakeCofactor
@@ -84,7 +84,7 @@ public:			//メンバ関数
 	 */
 	std::array<float, 16> GetDataArray()const;
 
-	
+
 public:		//静的メンバ関数
 
 	/*
@@ -101,7 +101,7 @@ public:		//静的メンバ関数
 	 * @return		Matrix_4x4
 	 */
 	static Matrix_4x4 FromTranslation(const Vector3& _pos);
-	
+
 	/*
 	 * @function	FromRotationEuler
 	 * @brief		回転から行列を構築
@@ -109,7 +109,7 @@ public:		//静的メンバ関数
 	 * @return		Matrix_4x4
 	 */
 	static Matrix_4x4 FromRotationEuler(const Vector3& _rota);
-	
+
 	/*
 	 * @function	FromScale
 	 * @brief		平行移動から行列を構築
@@ -127,7 +127,6 @@ public:		//静的メンバ関数
 	 * @return		Matrix_4x4
 	 */
 	static Matrix_4x4 LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up);
-
 
 private:	//内部処理しやすいようなメンバ関数
 
@@ -157,4 +156,7 @@ public:		//オペレーターのオーバーロード
 
 	//ベクトルとの掛け算
 	Vector3 operator*(const Vector3& _vec3);
+
+public:	//デバッグ用
+	void DebuPrint()const;
 };

@@ -43,8 +43,18 @@ void Renderer::DrawAll(Camera* _camera, float _aspect)
 		if (!mesh || !shader)continue;
 		//描画
 		Matrix_4x4 uMVP = ProjectionMat.Multiply(viewMat.Multiply(modelMat));
+
 		shader->Bind();
 		shader->SetUniformMat4("uMVP", uMVP);
+		std::cout << "MVP:\n";
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				std::cout << uMVP.matrix[i][j] << " ";
+			}
+			std::cout << std::endl;
+		}
+
+
 		//マテリアルをバインド
 		if (material) {
 			shader->SetUniformVec3("uDiffuseColor", material->diffuseColor);

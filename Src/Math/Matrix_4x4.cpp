@@ -1,4 +1,5 @@
 #include "Matrix_4x4.h"
+#include <iostream>
 
 Matrix_4x4::Matrix_4x4(){
     for (int i = 0; i < 4; i++) {
@@ -83,13 +84,14 @@ Matrix_4x4 Matrix_4x4::Multiply(const Matrix_4x4& _other)const
 {
     //最終的に返す行列
     Matrix_4x4 result;
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
+    for (int col = 0; col < 4; col++) {
+        for (int row = 0; row < 4; row++) {
+            result.matrix[row][col] =
+                matrix[row][0] * _other.matrix[0][col] +
+                matrix[row][1] * _other.matrix[1][col] +
+                matrix[row][2] * _other.matrix[2][col] +
+                matrix[row][3] * _other.matrix[3][col];
 
-            result.matrix[i][j] = 0.0f;
-            for (int k = 0; k < 4; k++) {
-                result.matrix[i][j] += this->matrix[i][k] * _other.matrix[k][j];
-            }
         }
     }
 
@@ -141,9 +143,9 @@ std::array<float, 16> Matrix_4x4::GetDataArray() const
 {
     //配列に展開して返す
     std::array<float, 16> result;
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            result[i * 4 + j] = matrix[j][i];
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
+            result[row * 4 + col] = matrix[row][col];
         }
     }
 
@@ -230,9 +232,24 @@ Matrix_4x4 Matrix_4x4::FromRotationZ(float _radZ)
 
 Matrix_4x4 Matrix_4x4::LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up)
 {
+    Vector3 f = (_target - _eye).Normalize();
+    Vector3 r = Vector3::CrossProduct(f, _up).Normalize();
+    Vector3 u = Vector3::CrossProduct(r, f);
+
+    // 列優先（OpenGL）
+    std::array<float, 4> row0 = { r.x,  r.y,  r.z, -Vector3::DotProduct(r, _eye) };
+    std::array<float, 4> row1 = { u.x,  u.y,  u.z, -Vector3::DotProduct(u, _eye) };
+    std::array<float, 4> row2 = { -f.x, -f.y, -f.z,  Vector3::DotProduct(f, _eye) };
+    std::array<float, 4> row3 = { 0.0f, 0.0f, 0.0f, 1.0f };
+
+    return Matrix_4x4(row0, row1, row2, row3);
+
+
+
+#if 0
     //カメラの軸ベクトルを計算
     //Z軸
-    Vector3 forward = _eye - _target;
+    Vector3 forward = _target - _eye;
     forward.Normalize();
 
     //X軸
@@ -258,6 +275,7 @@ Matrix_4x4 Matrix_4x4::LookAt(const Vector3& _eye, const Vector3& _target, const
 
     Matrix_4x4 viewMat = rotaMat.Multiply(posMat);
     return viewMat;
+#endif
 }
 
 
@@ -270,3 +288,14 @@ Vector3 Matrix_4x4::operator*(const Vector3& _vec3)
 
     return Vector3(resultX,resultY,resultZ);
 }
+
+void Matrix_4x4::DebuPrint() const
+{
+    for (int i = 0; i < 4; i++) {
+        std::cout << matrix[i][0] << " "
+            << matrix[i][1] << " "
+            << matrix[i][2] << " "
+            << matrix[i][3] << std::endl;
+    }
+}
+

@@ -218,6 +218,9 @@
     <ClInclude Include="Src\Resource\MaterialResource.h">
       <Filter>ヘッダー ファイル\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Math\Vector2.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
