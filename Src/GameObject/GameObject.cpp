@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
 GameObject::GameObject()
-	:transform{std::make_unique<Transform> (Vector3::zero, Vector3::zero,Vector3::zero)}
+	:transform{std::make_unique<Transform> (Vector3::zero, Vector3::zero,Vector3::one)}
 	,mesh{std::make_shared<Mesh>()}
 	,shader{std::make_shared<Shader>()}
 	,model{std::make_shared<ModelResource>()}
@@ -37,8 +37,7 @@ void GameObject::Start()
  */
 void GameObject::Update(float _deltaTime)
 {
-	//s—ñ
-	transform->ToMatrix();
+	
 }
 
 Transform* GameObject::GetTransform()const

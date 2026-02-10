@@ -4,7 +4,7 @@
 
     Language/Generator: C/C++
     Specification: gl
-    APIs: gl=4.6
+    APIs: gl=3.3
     Profile: core
     Extensions:
         
@@ -14,9 +14,9 @@
     Reproducible: False
 
     Commandline:
-        --profile="core" --api="gl=4.6" --generator="c" --spec="gl" --extensions=""
+        --profile="core" --api="gl=3.3" --generator="c" --spec="gl" --extensions=""
     Online:
-        https://glad.dav1d.de/#profile=core&language=c&specification=gl&loader=on&api=gl%3D4.6
+        https://glad.dav1d.de/#profile=core&language=c&specification=gl&loader=on&api=gl%3D3.3
 */
 
 

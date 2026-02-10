@@ -62,4 +62,11 @@ public:			//メンバ関数
 	 * @param[in]	int _index
 	 */
 	void SetMaterialIndex(int _index);
+
+public:		//ゲッター
+
+	GLuint GetVAO() const{
+		return vao;
+	}
+
 };

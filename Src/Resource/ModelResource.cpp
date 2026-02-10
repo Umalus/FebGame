@@ -8,7 +8,7 @@
 
 ModelResource::ModelResource()
 	:meshes{}
-	,materials{}
+	, materials{}
 {
 }
 
@@ -26,7 +26,7 @@ void ModelResource::Load(const std::string& _filePath)
 	//ロード出来ていなければ早期リターン
 	if (!isFbxDataLoaded)
 		return;
-	
+
 	//Materialを取得
 	int materialCount = loader.GetScene()->GetMaterialCount();
 	for (int i = 0; i < materialCount; i++) {
@@ -38,7 +38,7 @@ void ModelResource::Load(const std::string& _filePath)
 		materials.push_back(materialRes);
 
 	}
-	
+
 	//MeshDataを取得
 	std::vector<MeshData> allMeshData = SearchAllNode(loader);
 
@@ -50,7 +50,7 @@ void ModelResource::Load(const std::string& _filePath)
 		createdMesh->SetMaterialIndex(data.materialIndex);
 		meshes.push_back(createdMesh);
 	}
-	
+
 }
 
 void ModelResource::UnLoad()
@@ -118,9 +118,12 @@ void ModelResource::SearceNodeRecursion(FbxNode* _node, std::vector<MeshData>& _
 	if (fbxMesh) {
 		std::cout << "Mesh found at node: " << _node->GetName() << std::endl;
 		MeshData meshData = SearchNode(fbxMesh);
-		int matIndex = _node->GetMaterialCount() > 0 ? 0 : -1;
-		meshData.materialIndex = matIndex;
-		_meshes.push_back(meshData);
+		if (!meshData.vertecies.empty()) {
+			int matIndex = _node->GetMaterialCount() > 0 ? 0 : -1;
+			meshData.materialIndex = matIndex;
+			_meshes.push_back(meshData);
+		}
+
 	}
 
 	//全てのルートノード探索が完了するまで再帰
@@ -132,10 +135,14 @@ void ModelResource::SearceNodeRecursion(FbxNode* _node, std::vector<MeshData>& _
 
 MeshData ModelResource::SearchNode(FbxMesh* _mesh)
 {
+	std::cout << "PolygonCount = " << _mesh->GetPolygonCount() << std::endl;
+	std::cout << "ControlPoints = " << _mesh->GetControlPointsCount() << std::endl;
+
+
 	//最終的に返すMeshDataを作成
 	MeshData meshData;
 	//メッシュが無ければ早期リターン
-	if (!_mesh || _mesh->GetElementUV() == nullptr)return meshData;
+	if (!_mesh)return meshData;
 	//各要素(頂点、法線、UV、描画順)をポリゴンループ内で抽出
 	std::vector<Vertex> fbxVertecies;
 	std::vector<unsigned int> fbxIndices;
@@ -143,12 +150,15 @@ MeshData ModelResource::SearchNode(FbxMesh* _mesh)
 	for (int i = 0, max = _mesh->GetPolygonCount(); i < max; i++) {
 		int polygonSize = _mesh->GetPolygonSize(i);
 		for (int j = 0; j < polygonSize; j++) {
+			std::cout << "poly " << i << " size=" << polygonSize
+				<< " idx=" << _mesh->GetPolygonVertex(i, j) << std::endl;
+
 			Vertex v;
 
 			//頂点を抽出
 			Vector3 vertex = FBXVec4ToVec3(_mesh->GetControlPointAt(_mesh->GetPolygonVertex(i, j)));
 			v.position = vertex;
-			
+
 			//法線を抽出
 			FbxVector4 normal;
 			if (_mesh->GetPolygonVertexNormal(i, j, normal))
@@ -174,10 +184,10 @@ MeshData ModelResource::SearchNode(FbxMesh* _mesh)
 				}
 			}
 
-			
+
 			//作られた頂点情報を配列に挿入
 			fbxVertecies.push_back(v);
-			
+
 			//ポリゴン描画順を設定
 			fbxIndices.push_back(currentIndex++);
 		}

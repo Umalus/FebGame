@@ -33,13 +33,17 @@ bool FBXLoader::LoadFBX(const std::string& _filePath)
 		std::cerr << "インポーターかシーンの生成に失敗しました" << std::endl;
 		return false;
 	}
-	
 	//読み込み出来たかどうか確認
 	bool isFbxLoaded = importer->Initialize(_filePath.c_str(), -1, fbxManager->GetIOSettings());
 	if (!isFbxLoaded) {
 		std::cerr << importer->GetStatus().GetErrorString() << std::endl;
 		return false;
 	}
+
+	FbxGeometryConverter converter(fbxManager);
+	converter.Triangulate(scene, true);
+
+
 	//シーンに展開
 	bool isImportScene = importer->Import(scene);
 	if (!isImportScene)

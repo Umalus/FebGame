@@ -54,6 +54,7 @@ void Renderer::DrawAll(Camera* _camera, float _aspect)
 			std::cout << std::endl;
 		}
 
+		glBindVertexArray(mesh->GetVAO());
 
 		//マテリアルをバインド
 		if (material) {

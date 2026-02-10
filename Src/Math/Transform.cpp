@@ -3,7 +3,7 @@
 Transform::Transform()
     :position{ Vector3(0,0,-5) }
     ,rotation{Vector3::zero}
-    , scale{ Vector3(1,1,1)}
+    , scale{ Vector3(3,3,3)}
     ,modelMatrix{}
 {
     UpdateModelMatrix();
@@ -31,7 +31,7 @@ Matrix_4x4 Transform::ToMatrix()const{
     Matrix_4x4 R = Matrix_4x4::FromRotationEuler(rotation);
     Matrix_4x4 T = Matrix_4x4::FromTranslation(position);
 
-    Matrix_4x4 transformMatrix = S.Multiply(R).Multiply(T);
+    Matrix_4x4 transformMatrix = T.Multiply(R).Multiply(S);
     transformMatrix.DebuPrint();
     return transformMatrix;
 }
@@ -40,8 +40,8 @@ void Transform::LookAt(const Vector3& _pos){
     //ï˚å¸ÇãÅÇﬂÇÈ
     Vector3 direction = (_pos - position).Normalize();
     //âÒì]Çê∂ê¨
-    float yaw = atan2f(direction.x, direction.z);
-    float pitch = atan2f(-direction.y,sqrtf(direction.x * direction.x + direction.z * direction.z));
+    float yaw = atan2f(direction.x, -direction.z);
+    float pitch = asinf(direction.y);
 
     rotation = Vector3(pitch, yaw, 0.0f);
 }

@@ -21,7 +21,12 @@ Mesh::~Mesh()
 }
 
 void Mesh::SetData(MeshData _meshData)
-{;
+{
+	/*std::cout << "v0 = " 
+		<< vertices[0].position.x << ", "
+		<< vertices[0].position.y << ", "
+		<< vertices[0].position.z << std::endl;*/
+
 	//頂点データを保存
 	this->vertices = _meshData.vertecies;
 	this->indices = _meshData.indices;

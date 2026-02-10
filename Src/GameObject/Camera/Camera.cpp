@@ -39,11 +39,11 @@ void Camera::Start()
 
 void Camera::Update(float _deltaTime)
 {
-	FreeLook(0.5f,0.5f);
+	FreeLook(0.5f, 0.5f);
 
 	front.x = cos(Vector3::Radians(yaw)) * cos(Vector3::Radians(pitch));
 	front.y = sin(Vector3::Radians(pitch));
-	front.z = sin(Vector3::Radians(yaw)) * cos(Vector3::Radians(pitch));
+	front.z = -sin(Vector3::Radians(yaw)) * cos(Vector3::Radians(pitch));
 	front = front.Normalize();
 }
 
@@ -106,7 +106,7 @@ Matrix_4x4 Camera::Perscpective(float _fov, float _aspect, float _near, float _f
 	float zScale = -(_far + _near) / zRange;
 	float zTrans = -(2 * _far * _near) / zRange;
 
-	//“§‹“Œ‰fs—ñ‚ğ\’z
+	//“§‹“Š‰es—ñ‚ğ\’z
 	std::array<float, 4> x = { xScale, 0.0f, 0.0f, 0.0f };
 	std::array<float, 4> y = { 0.0f, yScale, 0.0f, 0.0f };
 	std::array<float, 4> z = { 0.0f, 0.0f, zScale, zTrans };
