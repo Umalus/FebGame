@@ -66,19 +66,24 @@ int main() {
 		return -1;
 
 
-	std::vector<Vertex> vertices = {
-	{Vector3{-0.5f, -0.5f, 0.0f}, Vector3{}, Vector2{0.0f, 0.0f}}, // 左下
-	{Vector3{ 0.5f, -0.5f, 0.0f}, Vector3{}, Vector2{1.0f, 0.0f}}, // 右下
-	{Vector3{ 0.0f,  0.5f, 0.0f}, Vector3{}, Vector2{0.5f, 1.0f}}, // 上
-	};
+	//std::vector<Vertex> vertices = {
+	//{Vector3{-0.5f, -0.5f, 0.0f}, Vector3{}, Vector2{0.0f, 0.0f}}, // 左下
+	//{Vector3{ 0.5f, -0.5f, 0.0f}, Vector3{}, Vector2{1.0f, 0.0f}}, // 右下
+	//{Vector3{ 0.0f,  0.5f, 0.0f}, Vector3{}, Vector2{0.5f, 1.0f}}, // 上
+	//};
 
-	std::vector<unsigned int> indices = { 0, 1, 2 };
-	MeshData data;
-	data.vertecies = vertices;
-	data.indices = indices;
+	//std::vector<unsigned int> indices = { 0, 1, 2 };
+	//MeshData data;
+	//data.vertecies = vertices;
+	//data.indices = indices;
 
-	testMesh.SetData(data);
-	testMesh.UpdateToGPU();
+	//testMesh.SetData(data);
+	//testMesh.UpdateToGPU();
+
+	auto model = std::make_shared<ModelResource>();
+	model->Load("Res/Model/testModelVer2.fbx");
+
+	auto mesh = model->GetMesh(0);
 
 	Camera* pCamera = new Camera();
 
@@ -87,23 +92,27 @@ int main() {
 
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // 背景色
 
+
 #pragma endregion
 	while (!glfwWindowShouldClose(window)) {
 #pragma region テスト
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		static float angle = 0.0f;
-		angle += 1.0f;
+
+		pCamera->Update(60.0f);
 
 		Matrix_4x4 proj = pCamera->GetProjectionMatrix(aspectRatio);
 		Matrix_4x4 view = pCamera->GetViewMatrix();
-		Matrix_4x4 model = Matrix_4x4::FromRotationEuler(Vector3(0, angle, 0));
+		Matrix_4x4 modelMat =
+			Matrix_4x4::FromScale({ 0.01f, 0.01f, 0.01f })
+			.Multiply(Matrix_4x4::FromRotationEuler({ 0.0f, 0, 0 }))
+			.Multiply(Matrix_4x4::FromTranslation({ 0, 0.0f, 0.0f }));
 
 
-		Matrix_4x4 mvp = proj.Multiply(view.Multiply(model));
+		Matrix_4x4 mvp = proj.Multiply(view.Multiply(modelMat));
 		testShader.SetUniformMat4("uMVP", mvp);
 
 		testShader.Bind();
-		testMesh.Draw();
+		mesh->Draw();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

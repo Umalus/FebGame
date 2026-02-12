@@ -135,8 +135,8 @@ void ModelResource::SearceNodeRecursion(FbxNode* _node, std::vector<MeshData>& _
 
 MeshData ModelResource::SearchNode(FbxMesh* _mesh)
 {
-	std::cout << "PolygonCount = " << _mesh->GetPolygonCount() << std::endl;
-	std::cout << "ControlPoints = " << _mesh->GetControlPointsCount() << std::endl;
+	/*std::cout << "PolygonCount = " << _mesh->GetPolygonCount() << std::endl;
+	std::cout << "ControlPoints = " << _mesh->GetControlPointsCount() << std::endl;*/
 
 
 	//ÅI“I‚É•Ô‚·MeshData‚ðì¬
@@ -150,8 +150,8 @@ MeshData ModelResource::SearchNode(FbxMesh* _mesh)
 	for (int i = 0, max = _mesh->GetPolygonCount(); i < max; i++) {
 		int polygonSize = _mesh->GetPolygonSize(i);
 		for (int j = 0; j < polygonSize; j++) {
-			std::cout << "poly " << i << " size=" << polygonSize
-				<< " idx=" << _mesh->GetPolygonVertex(i, j) << std::endl;
+			/*std::cout << "poly " << i << " size=" << polygonSize
+				<< " idx=" << _mesh->GetPolygonVertex(i, j) << std::endl;*/
 
 			Vertex v;
 

@@ -28,7 +28,7 @@ void Camera::Start()
 	front = Vector3(0, 0, -1);
 	up = Vector3(0, 1, 0);
 
-	transform->SetPosition(Vector3(0, 0, 5));
+	transform->SetPosition(Vector3(0, 2, 5));
 
 	yaw = -90.0f;
 	pitch = 0.0f;
@@ -77,11 +77,15 @@ void Camera::ZoomCamera()
 
 Matrix_4x4 Camera::GetViewMatrix()
 {
+	std::cout << "front = " << front.x << ", " << front.y << ", " << front.z << std::endl;
+
+	front = Vector3(0, 0, -1);
 	//ˆÊ’uŽæ“¾
 	Vector3 cameraPos = transform->GetPosition();
 	//Œ©‚Ä‚¢‚é•ûŒü‚ðŽæ“¾
 	Vector3 lookDir = cameraPos + front;
-	Matrix_4x4 viewMat = Matrix_4x4::LookAt(cameraPos, lookDir, up);
+	Vector3 worldUp = Vector3(0,1,0);
+	Matrix_4x4 viewMat = Matrix_4x4::LookAt(cameraPos, lookDir, worldUp);
 
 	viewMat.DebuPrint();
 
