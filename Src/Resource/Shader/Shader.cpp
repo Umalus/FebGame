@@ -61,7 +61,7 @@ void Shader::SetUniformMat4(const std::string& _uMVP, const Matrix_4x4& _matrix)
     //uMVPçsóÒÇégóp
     glUseProgram(programID);
     std::array<float, 16> data = _matrix.GetDataArray();
-    glUniformMatrix4fv(GetUniformLocation(_uMVP), 1, GL_TRUE,data.data() );
+    glUniformMatrix4fv(GetUniformLocation(_uMVP), 1, GL_FALSE,data.data() );
 
     GLint loc = glGetUniformLocation(programID, "uMVP");
     std::cout << "uMVP loc = " << loc << std::endl;

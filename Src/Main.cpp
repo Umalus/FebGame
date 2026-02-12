@@ -58,70 +58,63 @@ int main() {
 	glViewport(0, 0, width, height);
 	float aspectRatio = static_cast<float>(width) / static_cast<float>(height);
 #pragma region テスト
-	/*ResourceManager::getInstance().LoadResource("Res/Model/testModelVer2.fbx", Model);
+	//以下初期化
+	Mesh testMesh;
+	Shader testShader;
 
-	GameObject* pTest = new GameObject();
+	if (!testShader.Load("Res/Shader/Shader.glsl", "Res/Shader/FragmentShader.glsl"))
+		return -1;
 
-	pTest->SetModel(ResourceManager::getInstance().GetResourceAs<ModelResource>(0));
-	pTest->GetTransform()->SetPosition(Vector3(0, 0, 0));
 
-	Camera* pCamera = new Camera();
-	pCamera->Start();
-
-	pCamera->GetTransform()->SetPosition(Vector3(0, 0, -20));
-	pCamera->GetTransform()->LookAt(Vector3(0, 0, 0));
-
-	Renderer* pRender = new Renderer();
-	pRender->Submit(pTest);*/
-	float tri[] = {
-	-0.5f, -0.5f, 0.0f,
-	 0.5f, -0.5f, 0.0f,
-	 0.0f,  0.5f, 0.0f
+	std::vector<Vertex> vertices = {
+	{Vector3{-0.5f, -0.5f, 0.0f}, Vector3{}, Vector2{0.0f, 0.0f}}, // 左下
+	{Vector3{ 0.5f, -0.5f, 0.0f}, Vector3{}, Vector2{1.0f, 0.0f}}, // 右下
+	{Vector3{ 0.0f,  0.5f, 0.0f}, Vector3{}, Vector2{0.5f, 1.0f}}, // 上
 	};
 
-	Shader testShadser;
-	testShadser.Load("Res/Shader/Shader.glsl", "Res/Shader/FragmentShader.glsl");
+	std::vector<unsigned int> indices = { 0, 1, 2 };
+	MeshData data;
+	data.vertecies = vertices;
+	data.indices = indices;
 
-	GLuint vao, vbo;
-	glGenVertexArrays(1, &vao);
-	glGenBuffers(1, &vbo);
+	testMesh.SetData(data);
+	testMesh.UpdateToGPU();
 
-	glBindVertexArray(vao);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(tri), tri, GL_STATIC_DRAW);
+	Camera* pCamera = new Camera();
 
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+
+	
+
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // 背景色
 
 #pragma endregion
-
-
-	//描画
 	while (!glfwWindowShouldClose(window)) {
-
 #pragma region テスト
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glUseProgram(triShader); // 上の超シンプル頂点＋単色フラグメント
-		glBindVertexArray(vao);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 
-		// バッファをスワップ
+		Matrix_4x4 proj = pCamera->GetProjectionMatrix(aspectRatio);
+		Matrix_4x4 view = pCamera->GetViewMatrix();
+		Matrix_4x4 model = Matrix_4x4::Identity();
+
+		Matrix_4x4 mvp = proj.Multiply(view.Multiply(model));
+		testShader.SetUniformMat4("uMVP", mvp);
+
+		testShader.Bind();
+		testMesh.Draw();
+
 		glfwSwapBuffers(window);
-
-		// イベント処理
 		glfwPollEvents();
 
 #pragma endregion
-
-
-
 	}
 
 	//glfwの解放
 	glfwDestroyWindow(window);
 	glfwTerminate();
 
+
+	delete(pCamera);
 	//コンソールで正常に終わったことを確認
 	std::cerr << "このプロジェクトは正常に終了しました" << std::endl;
 

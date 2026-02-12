@@ -142,12 +142,13 @@ float Matrix_4x4::Determinant()const {
 std::array<float, 16> Matrix_4x4::GetDataArray() const
 {
     std::array<float, 16> result;
-    for (int col = 0; col < 4; col++) {
-        for (int row = 0; row < 4; row++) {
+    for (int col = 0; col < 4; ++col) {
+        for (int row = 0; row < 4; ++row) {
             result[col * 4 + row] = matrix[row][col];
         }
     }
     return result;
+
 
 
     //配列に展開して返す
@@ -166,9 +167,9 @@ Matrix_4x4 Matrix_4x4::FromTranslation(const Vector3& _pos)
     //単位行列を生成
     Matrix_4x4 result = Identity();
     //最下段に_posをそれぞれ代入
-    result.matrix[0][3] = _pos.x;
-    result.matrix[1][3] = _pos.y;
-    result.matrix[2][3] = _pos.z;
+    result.matrix[3][0] = _pos.x;
+    result.matrix[3][1] = _pos.y;
+    result.matrix[3][2] = _pos.z;
 
 
     return result;
@@ -231,8 +232,8 @@ Matrix_4x4 Matrix_4x4::FromRotationZ(float _radZ)
     float cosTheta = cosf(Vector3::Radians(_radZ));
     float sinTheta = sinf(Vector3::Radians(_radZ));
     //各行を生成
-    std::array<float, 4> x = { cosTheta, -sinTheta, 0.0f, 0.0f };
-    std::array<float, 4> y = { sinTheta,cosTheta,0.0f,0.0f };
+    std::array<float, 4> x = { cosTheta, sinTheta, 0.0f, 0.0f };
+    std::array<float, 4> y = { -sinTheta,cosTheta,0.0f,0.0f };
     std::array<float, 4> z = { 0.0f, 0.0f, 1.0f, 0.0f };
     std::array<float, 4> w = { 0.0f, 0.0f, 0.0f, 1.0f };
 
@@ -242,16 +243,22 @@ Matrix_4x4 Matrix_4x4::FromRotationZ(float _radZ)
 Matrix_4x4 Matrix_4x4::LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up)
 {
     Vector3 f = (_target - _eye).Normalize();
-    Vector3 r = Vector3::CrossProduct(f, _up).Normalize();
-    Vector3 u = Vector3::CrossProduct(r, f);
+    Vector3 s = Vector3::CrossProduct(f, _up).Normalize();
+    Vector3 u = Vector3::CrossProduct(s, f);
 
-    // 列優先（OpenGL）
-    std::array<float, 4> row0 = { r.x,  r.y,  r.z, -Vector3::DotProduct(r, _eye) };
-    std::array<float, 4> row1 = { u.x,  u.y,  u.z, -Vector3::DotProduct(u, _eye) };
-    std::array<float, 4> row2 = { -f.x, -f.y, -f.z,  Vector3::DotProduct(f, _eye) };
-    std::array<float, 4> row3 = { 0.0f, 0.0f, 0.0f, 1.0f };
+    // ★ 列ベクトルとして渡す（column-major）
+    std::array<float, 4> col0 = { s.x, u.x, -f.x, 0.0f };
+    std::array<float, 4> col1 = { s.y, u.y, -f.y, 0.0f };
+    std::array<float, 4> col2 = { s.z, u.z, -f.z, 0.0f };
+    std::array<float, 4> col3 = {
+        -Vector3::DotProduct(s, _eye),
+        -Vector3::DotProduct(u, _eye),
+         Vector3::DotProduct(f, _eye),
+        1.0f
+    };
 
-    return Matrix_4x4(row0, row1, row2, row3);
+    return Matrix_4x4(col0, col1, col2, col3);
+
 
 
 

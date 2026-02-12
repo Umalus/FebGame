@@ -28,7 +28,7 @@ void Camera::Start()
 	front = Vector3(0, 0, -1);
 	up = Vector3(0, 1, 0);
 
-	transform->SetPosition(Vector3(0, 0, -5));
+	transform->SetPosition(Vector3(0, 0, 5));
 
 	yaw = -90.0f;
 	pitch = 0.0f;
@@ -98,7 +98,7 @@ Matrix_4x4 Camera::Perscpective(float _fov, float _aspect, float _near, float _f
 	//‹–ìŠp‚ğƒ‰ƒWƒAƒ“‚É•ÏŠ·
 	float fovRad = Vector3::Radians(_fov);
 	//ƒXƒP[ƒŠƒ“ƒOŒW”‚ğŒvZ
-	float yScale = 1 / tanf(fovRad / 2);
+	float yScale = 1 / tanf(fovRad / 2.0f);
 	float xScale = yScale / _aspect;
 
 	//Z²‚Ì‰œsŒW”‚ğŒvZ‚·‚é
@@ -109,8 +109,8 @@ Matrix_4x4 Camera::Perscpective(float _fov, float _aspect, float _near, float _f
 	//“§‹“Š‰es—ñ‚ğ\’z
 	std::array<float, 4> x = { xScale, 0.0f, 0.0f, 0.0f };
 	std::array<float, 4> y = { 0.0f, yScale, 0.0f, 0.0f };
-	std::array<float, 4> z = { 0.0f, 0.0f, zScale, zTrans };
-	std::array<float, 4> w = { 0.0f, 0.0f, -1.0f, 0.0f };
+	std::array<float, 4> z = { 0.0f, 0.0f, zScale, -1.0f };
+	std::array<float, 4> w = { 0.0f, 0.0f, zTrans, 0.0f };
 	Matrix_4x4 result = Matrix_4x4(x, y, z, w);
 
 	result.DebuPrint();
