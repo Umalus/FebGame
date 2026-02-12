@@ -91,11 +91,13 @@ int main() {
 	while (!glfwWindowShouldClose(window)) {
 #pragma region ƒeƒXƒg
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+		static float angle = 0.0f;
+		angle += 1.0f;
 
 		Matrix_4x4 proj = pCamera->GetProjectionMatrix(aspectRatio);
 		Matrix_4x4 view = pCamera->GetViewMatrix();
-		Matrix_4x4 model = Matrix_4x4::Identity();
+		Matrix_4x4 model = Matrix_4x4::FromRotationEuler(Vector3(0, angle, 0));
+
 
 		Matrix_4x4 mvp = proj.Multiply(view.Multiply(model));
 		testShader.SetUniformMat4("uMVP", mvp);
