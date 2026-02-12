@@ -79,6 +79,9 @@ int main() {
 	 0.0f,  0.5f, 0.0f
 	};
 
+	Shader testShadser;
+	testShadser.Load("Res/Shader/Shader.glsl", "Res/Shader/FragmentShader.glsl");
+
 	GLuint vao, vbo;
 	glGenVertexArrays(1, &vao);
 	glGenBuffers(1, &vbo);
